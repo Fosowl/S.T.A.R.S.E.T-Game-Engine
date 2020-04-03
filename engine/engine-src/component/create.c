@@ -7,8 +7,7 @@
 
 #include "../../include/starset-engine.h"
 
-
-static component_t *internal___create_new_component(int (*pointer)(component_t, ...)
+static component_t *internal___create_new_component(int (*pointer)()
 , char *name, int id)
 {
     component_t *component = malloc(sizeof(component_t));
@@ -24,7 +23,7 @@ static component_t *internal___create_new_component(int (*pointer)(component_t, 
 }
 
 static component_t *internal__add_component(component_t *component
-, int (*pointer)(component_t, ...), char *ptr_name, int id)
+, int (*pointer)(), char *ptr_name, int id)
 {
     component_t *new = NULL;
     component_t *copy_component = component;
@@ -42,7 +41,7 @@ static component_t *internal__add_component(component_t *component
 }
 
 void starset_add_component(entities_t *entities, char *name
-, int (*pointer)(component_t, ...), char *ptr_name)
+, int (*pointer)(), char *ptr_name)
 {
     entities_t *copy = entities;
     static int id = 0;

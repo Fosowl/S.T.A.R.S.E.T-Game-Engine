@@ -23,7 +23,7 @@ typedef struct component_t {
     char *name;
     int id;
     sfBool active;
-    int (*pointer)(component_t, ...);
+    int (*pointer)();
     struct component_t *next;
 } component_t;
 
