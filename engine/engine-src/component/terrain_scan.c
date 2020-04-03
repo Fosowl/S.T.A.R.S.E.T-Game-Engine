@@ -52,6 +52,19 @@ sfColor internal__image_average_color(sfImage *image, sfVector2i vector, sfVecto
     return (average);
 }
 
+void internal__analyser_set_reference(color_ref_t *reference)
+{
+    reference[0]->name = fill("grass");
+    reference[0]->color = (sfColor){0, 255, 0, 0};
+    reference[1]->name = fill("water");
+    reference[1]->color = (sfColor){0, 127, 255, 0};
+    reference[2]->name = fill("dirt");
+    reference[2]->color = (sfColor){0, 255, 0, 0};
+    reference[3]->name = fill("road");
+    reference[3]->color = (sfColor){64, 64, 64, 0};
+    reference[4]->name = fill("black");
+}
+
 char *internal__terrain_analyser(sfColor average)
 {
     color_ref_t reference[4];
@@ -59,16 +72,7 @@ char *internal__terrain_analyser(sfColor average)
     int smallest = 1000;
     int index = 0;
 
-    reference[0].name = fill("grass");
-    reference[0].color = (sfColor){0, 255, 0, 0};
-    reference[1].name = fill("water");
-    reference[1].color = (sfColor){0, 127, 255, 0};
-    reference[2].name = fill("dirt");
-    reference[2].color = (sfColor){0, 255, 0, 0};
-    reference[3].name = fill("road");
-    reference[3].color = (sfColor){64, 64, 64, 0};
-    reference[4].name = fill("black");
-    reference[4].color = (sfColor){0, 0, 0, 0};
+    internal___analyser_set_reference(&reference);
     for (int i = 0; i < 5; i++) {
         difference = sqrt(pow(reference[i].color.r - average.r, 2)+pow
         (reference[i].color.g - average.g, 2)+pow
