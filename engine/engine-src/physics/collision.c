@@ -12,7 +12,7 @@ typedef struct point_t {
     float second;
 } point_t;
 
-static sfBool internal__mouse_hover(entities_t *entitie_1, sfRenderWindow *window)
+static sfBool internal__mouse_hover(entities_t *entitie_1, sfWindow *window)
 {
     sfVector2i mouse = sfMouse_getPosition(window);
     point_t Ax;
@@ -26,22 +26,6 @@ static sfBool internal__mouse_hover(entities_t *entitie_1, sfRenderWindow *windo
     (float)mouse.y > Ay.first && (float)mouse.y < Ay.second)
         return (true);
     return (false);
-}
-static void internal__collision_physics(entities_t *entitie_1
-, entities_t *entitie_2, sfVector2i collision_vector)
-{
-    if (collision_vector.x != 0 && collision_vector.y != 0) {
-        if (collision_vector.x == -1)
-            entitie_1->position.x += entitie_1->speed * 1.5;
-        if (collision_vector.x == 1)
-            entitie_1->position.x -= entitie_1->speed * 1.5;
-        if (collision_vector.y == -1)
-            entitie_1->position.y += entitie_1->speed * 1.5;
-        if (collision_vector.y == 1)
-            entitie_1->position.y -= entitie_1->speed * 1.5;
-        entitie_1->collision = true;
-        entitie_2->collision = true;
-    }
 }
 
 static sfVector2i internal__entities_collide(entities_t *entitie_1
@@ -68,7 +52,7 @@ static sfVector2i internal__entities_collide(entities_t *entitie_1
     return (vector);
 }
 
-void internal__collider_update(entities_t *entities, sfRenderWindow *window)
+void internal__collider_update(entities_t *entities, sfWindow *window)
 {
     entities_t *copy = entities;
     sfVector2i collision_vector = (sfVector2i){0, 0};

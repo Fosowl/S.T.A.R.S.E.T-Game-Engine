@@ -46,10 +46,15 @@ ENGINE_FILES	= core/calculation.c\
 				  core/renderer.c\
 				  core/core_update.c\
 				  core/read_core.c\
-				  core/collision.c\
 				  core/multithread.c\
 				  core/rotation.c\
+				  physics/math.c\
+				  physics/collision.c\
+				  physics/physics_collide.c\
+				  component/terrain_scan.c\
 				  creator/entities_creator.c\
+				  creator/obstacle.c\
+				  creator/create_component.c\
 				  destroy/audio_destroy.c\
 				  destroy/component_destroy.c\
 				  destroy/entities_destroy.c\

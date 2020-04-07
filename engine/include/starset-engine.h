@@ -25,6 +25,7 @@ typedef struct component_t {
     sfBool active;
     int (*pointer)();
     struct component_t *next;
+    struct component_t *back;
 } component_t;
 
 typedef struct sheet_t {
@@ -45,11 +46,13 @@ typedef struct aspect_t {
 } aspect_t;
 
 typedef struct entities_t {
-    int collision;
     sfBool visible;
     int id;
     char *name;
+    float restitution;
+    sfBool collision;
     sfBool is_trigger;
+    sfBool fixed;
     sfBool mouse_hover;
     sfVector2f position;
     sfVector2u size;
@@ -57,7 +60,7 @@ typedef struct entities_t {
     float speed;
     int direction;
     float angle;
-    float weight;
+    float mass;
     aspect_t *aspect;
     component_t *component;
     audio_t *audio;
@@ -69,11 +72,13 @@ typedef struct entities_t {
 
 entities_t *starset_entities_add(entities_t *entities_list
 , char *source, char *name);
+entities_t *starset_add_obstacle_entities(entities_t *entities_list
+, sfVector2f position, sfVector2f size);
 
 // COMPONENT
 
 void starset_add_component(entities_t *entities, char *name
-, int (*pointer)(component_t, ...), char *ptr_name);
+, int (*pointer)(), char *ptr_name);
 
 // DESTROY
 
@@ -98,6 +103,10 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
 void starset_update_engine(entities_t *entities, sfRenderWindow *window);
 
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
+
+
+
+char *component__terrain_scanner(entities_t *entitie, ...);
 
 // FUNCTION ENGINE
 /*

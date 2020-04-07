@@ -14,12 +14,12 @@ entities_t *starset_entities_get_propreties(entities_t *entities, char *name)
 
     while (copy != NULL) {
         if (compare(copy->name, name) == true) {
-            break;
             ok = true;
+            break;
         }
         copy = copy->next;
     }
     if (ok == false)
-        put_error("bad entities name in starset_entities_move()\n");
+        put_error("bad entities name in starset_entities_get_propreties()\n");
     return (copy);
 }

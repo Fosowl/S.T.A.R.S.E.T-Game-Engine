@@ -46,6 +46,8 @@ static void internal__set_entities_value(entities_t *entities
 {
     entities->angle = 0.0f;
     entities->visible = true;
+    entities->fixed = false;
+    entities->is_trigger = false;
     entities->audio = NULL;
     entities->direction = RIGHT;
     entities->id = new_id;
@@ -68,7 +70,7 @@ static entities_t *internal__create_entities(char *source, char *name)
     internal__set_entities_value(entities, new_id, name);
     entities->aspect = internal__create_aspect(source);
     entities->size = sfTexture_getSize(entities->aspect->texture);
-    entities->weight = sqrt((entities->size.x * entities->size.y)) / 2;
+    entities->mass = sqrt((entities->size.x * entities->size.y)) / 2;
     new_id++;
     return (entities);
 }

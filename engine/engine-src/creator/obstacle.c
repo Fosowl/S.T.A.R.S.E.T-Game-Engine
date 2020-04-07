@@ -21,6 +21,7 @@ static entities_t *internal__create_obstacle(sfVector2f position
     new->visible = false;
     new->id = -1;
     new->is_trigger = false;
+    new->fixed = true;
     new->life = 1000;
     new->next = NULL;
     new->audio = NULL;

@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <stdarg.h>
 
 char **divide_array(char *str, char separation);
 int my_strcpy(char *dest, char *src);
@@ -41,6 +42,8 @@ int search(char *this, char *in);
 void put_error(char *str);
 int error(long long int check, char *text);
 char *my_revstr(char *str);
+char *fill(char *with);
+char *clean_alloc(int size);
 
 // dependancies for custom switch
 

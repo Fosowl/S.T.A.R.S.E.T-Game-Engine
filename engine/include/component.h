@@ -10,6 +10,5 @@
 
 #include "dependancies.h"
 
-#include <stdarg.h>
 
 #endif /* !COMPONENT_H_ */
