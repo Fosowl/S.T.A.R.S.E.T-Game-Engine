@@ -10,6 +10,11 @@
 
 #include "starset-engine.h"
 
+typedef struct thread_pass_t {
+    entities_t *entities;
+    sfRenderWindow *window;
+} thread_pass_t;
+
 int internal__get_vector_direction(float x, float y);
 int internal__follow_vector(sfVector2f *vector_1, sfVector2f *vector_2
 , float average_speed);
@@ -27,4 +32,8 @@ sfColor internal__image_average_color(sfImage *image, sfVector2i vector
 float internal__get_magnitude(sfVector2f vector);
 float internal__vector_angle(sfVector2f position_1, sfVector2f position_2);
 float internal__dot_product(sfVector2f position_1, sfVector2f position_2);
+
+void internal__dynamic_engine(void *pass);
+void internal__collider_call(void*pass);
+
 #endif /* !INTERNAL_H_ */

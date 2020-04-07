@@ -100,7 +100,7 @@ void starset_entities_move_to_other(entities_t *entities, char *first
 float starset_entities_rotate_to(entities_t *entitie, char *name
 , sfVector2f target);
 
-void starset_update_engine(entities_t *entities, sfRenderWindow *window);
+int starset_update_engine(entities_t *entities, sfRenderWindow *window);
 
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
 
