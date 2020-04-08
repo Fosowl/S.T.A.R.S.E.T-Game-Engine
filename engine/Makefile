@@ -44,9 +44,8 @@ ENGINE_DIR	= engine-src/
 ENGINE_FILES	= core/calculation.c\
 				  core/move_function.c\
 				  core/renderer.c\
-				  core/core_update.c\
+				  core/thread_update.c\
 				  core/read_core.c\
-				  core/multithread.c\
 				  core/rotation.c\
 				  physics/math.c\
 				  physics/collision.c\
