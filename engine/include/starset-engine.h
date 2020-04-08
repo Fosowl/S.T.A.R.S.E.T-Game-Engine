@@ -71,7 +71,7 @@ typedef struct entities_t {
 // CREATOR
 
 entities_t *starset_entities_add(entities_t *entities_list
-, char *source, char *name);
+, char *source, char *name, sfBool fixed);
 entities_t *starset_add_obstacle_entities(entities_t *entities_list
 , sfVector2f position, sfVector2f size);
 

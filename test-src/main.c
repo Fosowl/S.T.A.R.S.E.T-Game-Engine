@@ -16,14 +16,14 @@ int main (int ac, char **argv)
     sfVector2f mouse_pos;
     int b = 0;
 
-    entities_t *object_list = starset_entities_add(NULL, "./assets/back.jpg", "background");
+    entities_t *object_list = starset_entities_add(NULL, "./assets/back.jpg", "background", 1);
     starset_entities_get_propreties(object_list, "background")->is_trigger = 1;
-    object_list = starset_entities_add(object_list, "./assets/box.jpeg", "second_object");
-    object_list = starset_entities_add(object_list, "./assets/object_1.png", "object_1");
+    object_list = starset_entities_add(object_list, "./assets/box.jpeg", "second_object", 0);
+    object_list = starset_entities_add(object_list, "./assets/object_1.png", "object_1", 1);
     starset_entities_get_propreties(object_list, "object_1")->speed = 4;
     window = sfRenderWindow_create(mode, "ENGINE test", sfResize | sfClose, NULL);
     starset_entities_teleport(object_list, "background", 500.0f, 350.0f);
-    sfImage *image = sfImage_createFromFile("./assets/back.jpg");
+    starset_entities_teleport(object_list, "second_object", 400.0f, 250.0f); 
     sfRenderWindow_setFramerateLimit(window, 60);
     starset_entities_teleport(object_list, "object_1", 100.0f, 100.0f);
     while (sfRenderWindow_isOpen(window)) {
@@ -37,7 +37,6 @@ int main (int ac, char **argv)
         starset_update_engine(object_list, window);
         starset_entities_rotate_to(object_list, "object_1", mouse_pos);
         starset_entities_move(object_list, "object_1", mouse_pos.x, mouse_pos.y);
-        starset_entities_teleport(object_list, "second_object", 400.0f, 250.0f); 
         entities_t *test = starset_entities_get_propreties(object_list, "object_1");
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);

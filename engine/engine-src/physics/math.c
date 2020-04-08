@@ -9,7 +9,9 @@
 
 float internal__get_magnitude(sfVector2f vector)
 {
-    return (sqrt(pow(vector.x, 2) + pow(vector.y, 2)));
+    if (abs((int)sqrt(pow(vector.x, 2) + pow(vector.y, 2))) > 20000)
+        return (sqrt(pow(vector.x, 2) + pow(vector.y, 2)));
+    return (1.0f);
 }
 
 float internal__vector_angle(sfVector2f position_1, sfVector2f position_2)

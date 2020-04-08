@@ -42,17 +42,18 @@ static aspect_t *internal__create_aspect(char *source)
 }
 
 static void internal__set_entities_value(entities_t *entities
-, int new_id, char *name)
+, int new_id, char *name, sfBool fixed)
 {
     entities->angle = 0.0f;
     entities->visible = true;
-    entities->fixed = false;
+    entities->fixed = fixed;
     entities->is_trigger = false;
     entities->audio = NULL;
     entities->direction = RIGHT;
     entities->id = new_id;
     entities->life = 100;
     entities->name = name;
+    entities->restitution = 1;
     entities->position = (sfVector2f){0.0f, 0.0f};
     entities->speed = 1.0f;
     entities->previous = NULL;
@@ -60,14 +61,15 @@ static void internal__set_entities_value(entities_t *entities
     entities->component = NULL;
 }
 
-static entities_t *internal__create_entities(char *source, char *name)
+static entities_t *internal__create_entities(char *source, char *name
+, sfBool fixed)
 {
     entities_t *entities = malloc(sizeof(entities_t));
     static int new_id = 0;
 
     if (entities == NULL)
         return (NULL);
-    internal__set_entities_value(entities, new_id, name);
+    internal__set_entities_value(entities, new_id, name, fixed);
     entities->aspect = internal__create_aspect(source);
     entities->size = sfTexture_getSize(entities->aspect->texture);
     entities->mass = sqrt((entities->size.x * entities->size.y)) / 2;
@@ -76,17 +78,17 @@ static entities_t *internal__create_entities(char *source, char *name)
 }
 
 entities_t *starset_entities_add(entities_t *entities_list
-, char *source, char *name)
+, char *source, char *name, sfBool fixed)
 {
     entities_t *new_entities = NULL;
     entities_t *copy = NULL;
 
     if (entities_list == NULL) {
-        new_entities = internal__create_entities(source, name);
+        new_entities = internal__create_entities(source, name, fixed);
         return (new_entities);
     } else {
         for (copy = entities_list; copy->next != NULL; copy = copy->next);
-        copy->next = internal__create_entities(source, name);
+        copy->next = internal__create_entities(source, name, fixed);
         new_entities = entities_list;
     }
     return (new_entities);
