@@ -8,7 +8,7 @@
 #include "../../include/starset-engine.h"
 #include "../../include/internal.h"
 
-void internal__dynamic_engine(void *ptr)
+void internal__dynamic_engine(void *ptr, sfImage *image)
 {
     thread_pass_t *pass = (thread_pass_t *)ptr;
     sfMutex *mutex = sfMutex_create();
@@ -18,7 +18,13 @@ void internal__dynamic_engine(void *ptr)
         return;
     }
     sfMutex_lock(mutex);
-    starset_entities_render_all(pass->entities, pass->window);
+    for (entities_t *entitie = pass->entities; entitie != NULL
+    ; entitie = entitie->next) {
+        if (image != NULL)
+            pass->entities->terrain = component__terrain_scanner(entitie
+            , image);
+        starset_entities_render_single(entitie, pass->window);
+    }
     sfMutex_destroy(mutex);
 }
 
@@ -36,13 +42,15 @@ void internal__collider_call(void *ptr)
     sfMutex_destroy(mutex);
 }
 
-int starset_update_engine(entities_t *entities, sfRenderWindow *window)
+int starset_update_engine(entities_t *entities, sfRenderWindow *window
+, sfImage *image)
 {
     sfThread *core[3];
     thread_pass_t pass;
 
     pass.entities = entities;
     pass.window = window;
+    pass.image = image;
     core[0] = sfThread_create(&internal__collider_call, &pass);
     core[1] = sfThread_create(&internal__dynamic_engine, &pass);
     if (!core[0] || !core[1]) {

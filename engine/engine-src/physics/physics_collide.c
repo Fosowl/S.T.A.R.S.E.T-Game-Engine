@@ -36,7 +36,8 @@ static void internal__apply_impulse_law(sfVector2i collision_vector
 void internal__collision_physics(entities_t *entitie_1
 , entities_t *entitie_2, sfVector2i collision_vector)
 {
-    float normal = internal__dot_product(entitie_1->position, entitie_2->position);
+    float normal = internal__dot_product(entitie_1->position
+    , entitie_2->position);
     float e = (entitie_1->restitution < entitie_2->restitution
     ?entitie_1->restitution : entitie_2->restitution);
     float impulse = -(1 + e) * normal;

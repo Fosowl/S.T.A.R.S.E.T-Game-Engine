@@ -19,7 +19,7 @@ int main (int ac, char **argv)
     entities_t *object_list = starset_entities_add(NULL, "./assets/back.jpg", "background", 1);
     starset_entities_get_propreties(object_list, "background")->is_trigger = 1;
     object_list = starset_entities_add(object_list, "./assets/box.jpeg", "second_object", 0);
-    object_list = starset_entities_add(object_list, "./assets/object_1.png", "object_1", 1);
+    object_list = starset_entities_add(object_list, "./assets/object_1.png", "object_1", 0);
     starset_entities_get_propreties(object_list, "object_1")->speed = 4;
     window = sfRenderWindow_create(mode, "ENGINE test", sfResize | sfClose, NULL);
     starset_entities_teleport(object_list, "background", 500.0f, 350.0f);
@@ -34,10 +34,10 @@ int main (int ac, char **argv)
             break;
         mouse_pos.x = (float)sfMouse_getPositionRenderWindow(window).x;
         mouse_pos.y = (float)sfMouse_getPositionRenderWindow(window).y;
-        starset_update_engine(object_list, window);
         starset_entities_rotate_to(object_list, "object_1", mouse_pos);
         starset_entities_move(object_list, "object_1", mouse_pos.x, mouse_pos.y);
         entities_t *test = starset_entities_get_propreties(object_list, "object_1");
+        starset_update_engine(object_list, window, NULL);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);
         usleep(20000);

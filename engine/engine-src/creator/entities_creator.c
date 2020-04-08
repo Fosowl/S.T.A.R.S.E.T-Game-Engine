@@ -41,24 +41,25 @@ static aspect_t *internal__create_aspect(char *source)
     return (aspect);
 }
 
-static void internal__set_entities_value(entities_t *entities
+static void internal__set_entities_value(entities_t *entitie
 , int new_id, char *name, sfBool fixed)
 {
-    entities->angle = 0.0f;
-    entities->visible = true;
-    entities->fixed = fixed;
-    entities->is_trigger = false;
-    entities->audio = NULL;
-    entities->direction = RIGHT;
-    entities->id = new_id;
-    entities->life = 100;
-    entities->name = name;
-    entities->restitution = 1;
-    entities->position = (sfVector2f){0.0f, 0.0f};
-    entities->speed = 1.0f;
-    entities->previous = NULL;
-    entities->next = NULL;
-    entities->component = NULL;
+    entitie->angle = 0.0f;
+    entitie->visible = true;
+    entitie->fixed = fixed;
+    entitie->is_trigger = false;
+    entitie->audio = NULL;
+    entitie->direction = RIGHT;
+    entitie->id = new_id;
+    entitie->life = 100;
+    entitie->name = name;
+    entitie->terrain = fill("unknown");
+    entitie->restitution = 1;
+    entitie->position = (sfVector2f){0.0f, 0.0f};
+    entitie->speed = 1.0f;
+    entitie->previous = NULL;
+    entitie->next = NULL;
+    entitie->component = NULL;
 }
 
 static entities_t *internal__create_entities(char *source, char *name

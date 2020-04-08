@@ -61,6 +61,7 @@ typedef struct entities_t {
     int direction;
     float angle;
     float mass;
+    char *terrain;
     aspect_t *aspect;
     component_t *component;
     audio_t *audio;
@@ -87,6 +88,7 @@ void starset_entities_destroy(entities_t *entities);
 
 // RENDER
 
+void starset_entities_render_single(entities_t *copy, sfRenderWindow *window);
 void starset_entities_render_all(entities_t *entities, sfRenderWindow *window);
 
 // CORE
@@ -100,7 +102,8 @@ void starset_entities_move_to_other(entities_t *entities, char *first
 float starset_entities_rotate_to(entities_t *entitie, char *name
 , sfVector2f target);
 
-int starset_update_engine(entities_t *entities, sfRenderWindow *window);
+int starset_update_engine(entities_t *entities, sfRenderWindow *window
+, sfImage *image);
 
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
 

@@ -9,7 +9,7 @@
 
 float internal__get_magnitude(sfVector2f vector)
 {
-    if (abs((int)sqrt(pow(vector.x, 2) + pow(vector.y, 2))) > 20000)
+    if (abs((int)sqrt(pow(vector.x, 2) + pow(vector.y, 2))) < 50)
         return (sqrt(pow(vector.x, 2) + pow(vector.y, 2)));
     return (1.0f);
 }

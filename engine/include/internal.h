@@ -13,6 +13,7 @@
 typedef struct thread_pass_t {
     entities_t *entities;
     sfRenderWindow *window;
+    sfImage *image;
 } thread_pass_t;
 
 int internal__get_vector_direction(float x, float y);
@@ -33,7 +34,7 @@ float internal__get_magnitude(sfVector2f vector);
 float internal__vector_angle(sfVector2f position_1, sfVector2f position_2);
 float internal__dot_product(sfVector2f position_1, sfVector2f position_2);
 
-void internal__dynamic_engine(void *pass);
+void internal__dynamic_engine(void *pass, sfImage *image);
 void internal__collider_call(void*pass);
 
 #endif /* !INTERNAL_H_ */
