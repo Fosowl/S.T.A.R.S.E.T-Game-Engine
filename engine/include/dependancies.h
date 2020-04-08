@@ -22,6 +22,8 @@
 #include <SFML/System/Vector2.h>
 #include <SFML/Window/Mouse.h>
 #include <SFML/System/Clock.h>
+#include <SFML/System/Mutex.h>
+#include <SFML/System/Thread.h>
 
 #include <math.h>
 

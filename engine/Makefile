@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-MODE=NORMAL
+MODE=DEBUG
 
 # color codes
 _END=$'\x1b[0m'

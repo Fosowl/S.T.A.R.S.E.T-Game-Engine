@@ -6,15 +6,16 @@
 */
 
 #include "../../include/starset-engine.h"
+#include "../../include/internal.h"
 
 typedef struct point_t {
     float first;
     float second;
 } point_t;
 
-static sfBool internal__mouse_hover(entities_t *entitie_1, sfWindow *window)
+static sfBool internal__mouse_hover(entities_t *entitie_1, sfRenderWindow *window)
 {
-    sfVector2i mouse = sfMouse_getPosition(window);
+    sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
     point_t Ax;
     point_t Ay;
 
@@ -52,7 +53,7 @@ static sfVector2i internal__entities_collide(entities_t *entitie_1
     return (vector);
 }
 
-void internal__collider_update(entities_t *entities, sfWindow *window)
+void internal__collider_update(entities_t *entities, sfRenderWindow *window)
 {
     entities_t *copy = entities;
     sfVector2i collision_vector = (sfVector2i){0, 0};

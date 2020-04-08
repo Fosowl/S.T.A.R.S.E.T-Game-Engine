@@ -6,6 +6,7 @@
 */
 
 #include "../../include/starset-engine.h"
+#include "../../include/internal.h"
 
 sfVector2i internal__invert_vector(sfVector2i vector)
 {
@@ -35,7 +36,6 @@ static void internal__apply_impulse_law(sfVector2i collision_vector
 void internal__collision_physics(entities_t *entitie_1
 , entities_t *entitie_2, sfVector2i collision_vector)
 {
-    float relative_v = entitie_2->speed - entitie_1->speed;
     float normal = internal__dot_product(entitie_1->position, entitie_2->position);
     float e = (entitie_1->restitution < entitie_2->restitution
     ?entitie_1->restitution : entitie_2->restitution);
