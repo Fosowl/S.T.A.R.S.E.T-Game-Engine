@@ -54,9 +54,11 @@ ENGINE_FILES	= core/calculation.c\
 				  component/call.c\
 				  component/terrain_scan.c\
 				  component/terrain_destroy.c\
+				  component/animator.c\
 				  creator/entities_creator.c\
 				  creator/obstacle.c\
 				  creator/create_component.c\
+				  creator/create_animator.c\
 				  destroy/audio_destroy.c\
 				  destroy/component_destroy.c\
 				  destroy/entities_destroy.c\

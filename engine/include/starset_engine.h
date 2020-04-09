@@ -31,9 +31,9 @@ typedef struct component_t {
 typedef struct animator_t {
     char *name;
     sfVector2u size;
+    int max;
     int index;
     sfVector2f position[50];
-    struct animator_t *back;
     struct animator_t *next;
 } animator_t;
 

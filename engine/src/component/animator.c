@@ -44,7 +44,7 @@ void starset_play_animation(entities_t *entitie, char *e_name
     sfClock_restart(cock);
     for (entities_t *copy = entitie; copy != NULL; copy = copy->next) {
         if (search(get[0],copy->name) != -1 || search(get[1], copy->name) != -1) {
-            if (frame > copy->aspect->sheet->a->index)
+            if (frame > copy->aspect->sheet->a->max)
                 frame = 0;
             internal__play_animation_frame(copy->aspect, a_name, frame);
             frame++;

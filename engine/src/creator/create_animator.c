@@ -17,7 +17,8 @@ static animator_t *internal__create_animation(char *a_name, sfVector2u size)
     animator->size.y = size.y;
     animator->name = fill(a_name);
     animator->next = NULL;
-    animator->back = NULL;
+    animator->index = 0;
+    animator->max = 0;
     return (animator);
 }
 
@@ -25,19 +26,16 @@ static void internal__add_animation_to(entities_t *this, char *a_name
 , sfVector2u size)
 {
     animator_t *copy = NULL;
-    animator_t *tmp = NULL;
     animator_t *end = this->aspect->sheet->a;
 
     if (this->aspect->sheet->a == NULL) {
         this->aspect->sheet->a = internal__create_animation(a_name, size);
     } else {
-        for (copy = this->aspect->sheet->a; copy != NULL; ) {
+        for (copy = this->aspect->sheet->a; copy->next != NULL; ) {
             copy = copy->next;
         }
-        tmp = copy;
         copy->next = internal__create_animation(a_name, size);
         copy->next->next = end;
-        copy->next->back = tmp;
     }
 }
 
@@ -67,8 +65,10 @@ static void internal__add_keyframe_to(sheet_t *this, char *a_name
     for ( ; copy != NULL; copy = copy->next) {
         if (compare(copy->name, a_name) == true) {
             copy->position[copy->index] = keyframe;
-            copy->index += 1;
+            if (copy->index < 50)
+                copy->index += 1;
             ok = true;
+            copy->max = copy->index;
         }
     }
     if (ok == false)
@@ -83,7 +83,7 @@ void starset_add_animation_key(entities_t *entities, char *e_name
 
     for (entities_t *copy = entities; copy != NULL; copy = copy->next) {
         if (search(get[0], copy->name) != -1 ||
-        search(get[0], copy->name) != -1) {
+        search(get[1], copy->name) != -1) {
             internal__add_keyframe_to(copy->aspect->sheet, a_name, keyframe);
             ok = true;
         }
