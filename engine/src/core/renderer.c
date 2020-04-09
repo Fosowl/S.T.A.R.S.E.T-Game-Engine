@@ -10,7 +10,11 @@
 void starset_entities_render_single(entities_t *copy, sfRenderWindow *window)
 {
     float rotation = 0.0f;
+    int height = (int)copy->aspect->sheet->rect.height / 2;
+    int width = (int)copy->aspect->sheet->rect.width / 2;
 
+    sfSprite_setOrigin(copy->aspect->sprite, (sfVector2f){width, height});
+    sfSprite_setTextureRect(copy->aspect->sprite, copy->aspect->sheet->rect);
     sfSprite_setPosition(copy->aspect->sprite, copy->position);
     rotation = copy->angle + copy->aspect->rotation;
     sfSprite_setRotation(copy->aspect->sprite, rotation);

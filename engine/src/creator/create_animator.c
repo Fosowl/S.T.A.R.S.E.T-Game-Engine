@@ -26,7 +26,6 @@ static void internal__add_animation_to(entities_t *this, char *a_name
 , sfVector2u size)
 {
     animator_t *copy = NULL;
-    animator_t *end = this->aspect->sheet->a;
 
     if (this->aspect->sheet->a == NULL) {
         this->aspect->sheet->a = internal__create_animation(a_name, size);
@@ -35,7 +34,6 @@ static void internal__add_animation_to(entities_t *this, char *a_name
             copy = copy->next;
         }
         copy->next = internal__create_animation(a_name, size);
-        copy->next->next = end;
     }
 }
 

@@ -8,6 +8,31 @@
 #include "project.h"
 #include "starset_engine.h"
 
+int animator_set(entities_t *entities)
+{
+    starset_add_animation(entities, "zombie", "down", (sfVector2u){48, 48});
+    starset_add_animation_key(entities, "zombie", "down", (sfVector2f){90, 0});
+    starset_add_animation_key(entities, "zombie", "down", (sfVector2f){123, 0});
+    starset_add_animation_key(entities, "zombie", "down", (sfVector2f){156, 0});
+    starset_add_animation_key(entities, "zombie", "down", (sfVector2f){189, 0});
+    starset_add_animation(entities, "zombie", "left", (sfVector2u){48, 48});
+    starset_add_animation_key(entities, "zombie", "left", (sfVector2f){100, 50});
+    starset_add_animation_key(entities, "zombie", "left", (sfVector2f){133, 50});
+    starset_add_animation_key(entities, "zombie", "left", (sfVector2f){166, 50});
+    starset_add_animation_key(entities, "zombie", "left", (sfVector2f){199, 50});
+    starset_add_animation(entities, "zombie", "right", (sfVector2u){48, 48});
+    starset_add_animation_key(entities, "zombie", "right", (sfVector2f){100, 108});
+    starset_add_animation_key(entities, "zombie", "right", (sfVector2f){133, 108});
+    starset_add_animation_key(entities, "zombie", "right", (sfVector2f){166, 108});
+    starset_add_animation_key(entities, "zombie", "right", (sfVector2f){199, 108});
+    starset_add_animation(entities, "zombie", "up", (sfVector2u){48, 48});
+    starset_add_animation_key(entities, "zombie", "up", (sfVector2f){100, 108});
+    starset_add_animation_key(entities, "zombie", "up", (sfVector2f){133,108});
+    starset_add_animation_key(entities, "zombie", "up", (sfVector2f){166,108});
+    starset_add_animation_key(entities, "zombie", "up", (sfVector2f){199,108});
+    return (0);
+}
+
 int main (int ac, char **argv)
 {
     sfRenderWindow *window;
@@ -24,6 +49,7 @@ int main (int ac, char **argv)
     starset_entities_get_propreties(object_list, "zombie")->speed = 5;
     window = sfRenderWindow_create(mode, "ENGINE test", sfResize | sfClose, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
+    animator_set(object_list);
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event))
             if (event.type == sfEvtClosed)
@@ -33,6 +59,7 @@ int main (int ac, char **argv)
         mouse_pos.x = (float)sfMouse_getPositionRenderWindow(window).x;
         mouse_pos.y = (float)sfMouse_getPositionRenderWindow(window).y;
         starset_entities_move(object_list, "zombie", mouse_pos.x, mouse_pos.y);
+        starset_play_animation(object_list, "zombie", "up", 4);
         starset_update_engine(object_list, window, NULL);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);
