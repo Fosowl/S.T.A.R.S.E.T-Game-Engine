@@ -6,7 +6,7 @@
 */
 
 #include "../../include/macro.h"
-#include "../../include/starset-engine.h"
+#include "../../include/starset_engine.h"
 
 static sheet_t *internal__create_sheet(sfVector2u size)
 {

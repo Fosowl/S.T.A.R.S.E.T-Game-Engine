@@ -8,7 +8,7 @@
 #ifndef INTERNAL_H_
 #define INTERNAL_H_
 
-#include "starset-engine.h"
+#include "starset_engine.h"
 
 typedef struct thread_pass_t {
     entities_t *entities;
@@ -34,7 +34,7 @@ float internal__get_magnitude(sfVector2f vector);
 float internal__vector_angle(sfVector2f position_1, sfVector2f position_2);
 float internal__dot_product(sfVector2f position_1, sfVector2f position_2);
 
-void internal__dynamic_engine(void *pass, sfImage *image);
-void internal__collider_call(void*pass);
+void internal__dynamic_engine(void *ptr);
+void internal__collider_call(void *pass);
 
 #endif /* !INTERNAL_H_ */

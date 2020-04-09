@@ -5,7 +5,6 @@
 ** realistic collsion physics
 */
 
-#include "../../include/starset-engine.h"
 #include "../../include/internal.h"
 
 sfVector2i internal__invert_vector(sfVector2i vector)

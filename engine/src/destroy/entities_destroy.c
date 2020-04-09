@@ -5,7 +5,6 @@
 ** free memory allocated for entities
 */
 
-#include "../../include/starset-engine.h"
 #include "../../include/internal.h"
 
 static void internal__destroy_aspect(aspect_t *aspect)
@@ -13,7 +12,7 @@ static void internal__destroy_aspect(aspect_t *aspect)
     aspect_t *tmp = NULL;
 
     while (aspect != NULL) {
-        tmp = aspect; 
+        tmp = aspect;
         aspect = aspect->next;
         if (tmp->sprite != NULL) {
             sfSprite_destroy(tmp->sprite);
@@ -39,7 +38,7 @@ void starset_entities_destroy_all(entities_t *entities)
 {
     entities_t *tmp = NULL;
 
-    while(entities != NULL) {
+    while (entities != NULL) {
         tmp = entities;
         entities = entities->next;
         internal__entities_destroy(tmp);

@@ -5,7 +5,7 @@
 ** audio_destroy
 */
 
-#include "../../include/starset-engine.h"
+#include "../../include/starset_engine.h"
 
 void internal__destroy_audio(audio_t *audio)
 {

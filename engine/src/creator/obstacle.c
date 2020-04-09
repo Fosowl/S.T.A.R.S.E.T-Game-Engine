@@ -5,7 +5,7 @@
 ** obstacle creator
 */
 
-#include "../../include/starset-engine.h"
+#include "../../include/starset_engine.h"
 
 static entities_t *internal__create_obstacle(sfVector2f position
 , sfVector2f size)

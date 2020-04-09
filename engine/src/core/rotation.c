@@ -6,7 +6,6 @@
 */
 
 #include "../../include/internal.h"
-#include "../../include/starset-engine.h"
 
 float starset_entities_rotate_to(entities_t *entitie, char *name
 , sfVector2f target)
@@ -15,9 +14,11 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
     int ok = false;
     float x = 0.0f;
     float y = 0.0f;
+    char **get = internal__get_class(name);
 
     while (copy != NULL) {
-        if (compare(copy->name, name) == true) {
+        if (search(get[0], copy->name) != -1 || search(copy->name
+        , get[0]) != -1) {
             x = target.x - copy->position.x;
             y = target.y - copy->position.y;
             if (sqrt(pow(y, 2) + pow(x, 2)) >= (copy->size.x / 2))

@@ -5,7 +5,7 @@
 ** create and add new component
 */
 
-#include "../../include/starset-engine.h"
+#include "../../include/starset_engine.h"
 
 static component_t *internal__create_new_component(int (*pointer)()
 , char *name, int id)
@@ -48,10 +48,11 @@ void starset_add_component(entities_t *entities, char *name
 {
     entities_t *copy = NULL;
     static int id = 0;
+    char **get = internal__get_class(name);
 
     for (copy = entities; copy != NULL
     ; copy = copy->next) {
-        if (compare(copy->name, name) == true) {
+        if (search(get[0], copy->name) != -1 || search(get[1], copy->name) != -1) {
             copy->component = internal__add_component(copy->component, pointer
             , ptr_name, id);
         }

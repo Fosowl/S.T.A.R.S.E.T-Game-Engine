@@ -33,6 +33,9 @@
 #include <stdbool.h>
 #include <stdarg.h>
 
+int count_word(char *buffer);
+char **clean_double_alloc(int y, int x);
+int longest_word(char *buffer);
 char **divide_array(char *str, char separation);
 int my_strcpy(char *dest, char *src);
 long long my_atoi(char *str);

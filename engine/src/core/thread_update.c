@@ -5,10 +5,10 @@
 ** core_update
 */
 
-#include "../../include/starset-engine.h"
 #include "../../include/internal.h"
+#include "../../include/component.h"
 
-void internal__dynamic_engine(void *ptr, sfImage *image)
+void internal__dynamic_engine(void *ptr)
 {
     thread_pass_t *pass = (thread_pass_t *)ptr;
     sfMutex *mutex = sfMutex_create();
@@ -20,9 +20,11 @@ void internal__dynamic_engine(void *ptr, sfImage *image)
     sfMutex_lock(mutex);
     for (entities_t *entitie = pass->entities; entitie != NULL
     ; entitie = entitie->next) {
-        if (image != NULL)
+        if (pass->image != NULL) {
+            free (pass->entities->terrain);
             pass->entities->terrain = component__terrain_scanner(entitie
-            , image);
+            , pass->image);
+        }
         starset_entities_render_single(entitie, pass->window);
     }
     sfMutex_destroy(mutex);

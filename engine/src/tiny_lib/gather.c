@@ -59,3 +59,15 @@ int search(char *this, char *in)
     }
     return (-1);
 }
+
+int count_word(char *buffer)
+{
+    int count = 0;
+
+    for (int i = 0; buffer[i] != '\0'; i++) {
+        for (; buffer[i + 1] == ' ' || buffer[i + 1] == '\t'; i++);
+        if (buffer[i] == ' ' || buffer[i] == '\t')
+            count++;
+    }
+    return (count);
+}

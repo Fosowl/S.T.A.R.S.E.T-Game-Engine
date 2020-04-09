@@ -39,7 +39,7 @@ ENGINE_NAME	= starset.a
 
 IDIR	= include/
 
-ENGINE_DIR	= engine-src/
+ENGINE_DIR	= src/
 
 ENGINE_FILES	= core/calculation.c\
 				  core/move_function.c\
@@ -47,10 +47,13 @@ ENGINE_FILES	= core/calculation.c\
 				  core/thread_update.c\
 				  core/read_core.c\
 				  core/rotation.c\
+				  core/misc.c\
 				  physics/math.c\
 				  physics/collision.c\
 				  physics/physics_collide.c\
+				  component/call.c\
 				  component/terrain_scan.c\
+				  component/terrain_destroy.c\
 				  creator/entities_creator.c\
 				  creator/obstacle.c\
 				  creator/create_component.c\
@@ -92,7 +95,7 @@ clean:
 	@echo -e "${_BOLD}${_IRED}removing compilation files !${_END}"
 	@rm -f $(OBJS) *.gcda *.gcno
 	@rm -f $(ENGINE_NAME)
- 
+
 tests_run: fclean all
 	@gcc -o $(TEST_NAME) $(TEST) $(LIB_NAME) $(CFLAGS) --coverage -lcriterion
 	@echo -e "${_BOLD}${_IGREEN}program test compiled !${_END}\n"

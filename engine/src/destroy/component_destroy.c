@@ -5,7 +5,7 @@
 ** free the memory allocated for each component
 */
 
-#include "../../include/starset-engine.h"
+#include "../../include/starset_engine.h"
 
 void internal__destroy_component(component_t *component)
 {
@@ -27,7 +27,7 @@ static void internal__remove_this_component(entities_t *entitie, char *ptr_name)
     component_t *copy = entitie->component;
     component_t *tmp = NULL;
 
-    while(copy->next != NULL) {
+    while (copy->next != NULL) {
         if (compare(copy->name, ptr_name) == true) {
             tmp = copy;
             tmp->back->next = copy->next;

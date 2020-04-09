@@ -30,7 +30,6 @@ long long my_atoi(char *str)
     return (val);
 }
 
-
 char *my_itoa(int nb)
 {
     char *str = malloc(sizeof(char) * 100);

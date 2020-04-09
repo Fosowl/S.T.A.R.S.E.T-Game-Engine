@@ -5,7 +5,7 @@
 ** render entities
 */
 
-#include "../../include/starset-engine.h"
+#include "../../include/starset_engine.h"
 
 void starset_entities_render_single(entities_t *copy, sfRenderWindow *window)
 {
@@ -23,7 +23,6 @@ void starset_entities_render_single(entities_t *copy, sfRenderWindow *window)
 void starset_entities_render_all(entities_t *entities, sfRenderWindow *window)
 {
     entities_t *copy = entities;
-    float rotation = 0.0f;
 
     while (copy != NULL) {
             starset_entities_render_single(copy, window);

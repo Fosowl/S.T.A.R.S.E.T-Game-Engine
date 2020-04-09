@@ -2,37 +2,24 @@
 ** EPITECH PROJECT, 2020
 ** engine
 ** File description:
-** component to scan entities terrain 
+** component to scan entities terrain
 */
 
-#include "../../include/starset-engine.h"
-#include "../../include/internal.h"
-
-typedef struct color_ref_t
-{
-    sfColor color;
-    char *name;
-} color_ref_t;
-
-typedef struct area_t {
-    sfColor right;
-    sfColor left;
-    sfColor up;
-    sfColor down;
-    sfColor center;
-} area_t;
-
+#include "../../include/starset_engine.h"
+#include "../../include/component.h"
 
 static void avoid_memory_void(sfVector2i vector, sfVector2i *position
 , sfVector2u size, sfVector2i offset)
 {
-    if (vector.x - (offset.x / 2) > 20 && vector.x + (offset.x / 2) < (int)size.x)
+    if (vector.x - (offset.x / 2) > 20 &&
+    vector.x + (offset.x / 2) < (int)size.x)
         position->x = vector.x;
     else if (vector.x - (offset.x / 2) > 20)
         position->x = size.x - offset.x;
     else
         position->x = offset.x;
-    if (vector.y - (offset.y / 2) > 20 && vector.y + (offset.y / 2) < (int)size.y)
+    if (vector.y - (offset.y / 2) > 20 &&
+    vector.y + (offset.y / 2) < (int)size.y)
         position->y = vector.y;
     else if (vector.y - (offset.y / 2) > 20)
         position->y = size.y - offset.y;
@@ -97,7 +84,7 @@ static char *internal__terrain_analyser(sfColor average)
             index = i;
         }
     }
-    return reference[index]->name;
+    return (terrain__destroy_reference(reference, index));
 }
 
 char *component__terrain_scanner(entities_t *entitie, ...)

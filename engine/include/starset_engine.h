@@ -107,9 +107,9 @@ int starset_update_engine(entities_t *entities, sfRenderWindow *window
 
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
 
+// MISC
 
-
-char *component__terrain_scanner(entities_t *entitie, ...);
+char **internal__get_class(char *name);
 
 // FUNCTION ENGINE
 /*
