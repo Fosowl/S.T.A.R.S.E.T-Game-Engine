@@ -37,4 +37,6 @@ float internal__dot_product(sfVector2f position_1, sfVector2f position_2);
 void internal__dynamic_engine(void *ptr);
 void internal__collider_call(void *pass);
 
+char **internal__get_class(char *name);
+
 #endif /* !INTERNAL_H_ */

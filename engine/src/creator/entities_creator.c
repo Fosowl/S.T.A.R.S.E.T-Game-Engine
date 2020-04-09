@@ -14,10 +14,9 @@ static sheet_t *internal__create_sheet(sfVector2u size)
 
     if (sheet == NULL)
         return (NULL);
-    sheet->current_sheet = 0;
-    sheet->size = size;
-    sheet->rect = sfRectangleShape_create();
-    sheet->sheet_list = NULL;
+    sheet->rect = (sfIntRect){0, 0, size.x, size.y};
+    sheet->a = NULL;
+    sheet->current = (sfVector2f){0.0f, 0.0f};
     return (sheet);
 }
 
@@ -31,7 +30,6 @@ static aspect_t *internal__create_aspect(char *source)
     if (aspect->sprite == NULL || aspect->texture == NULL)
         return (NULL);
     sfSprite_setTexture(aspect->sprite, aspect->texture, false);
-    aspect->is_spritesheet = false;
     aspect->offset = (sfVector2f){0, 0};
     aspect->rotation = 0.0f;
     size = sfTexture_getSize(aspect->texture);
@@ -55,7 +53,7 @@ static void internal__set_entities_value(entities_t *entitie
     entitie->name = name;
     entitie->terrain = fill("unknown");
     entitie->restitution = 1;
-    entitie->position = (sfVector2f){0.0f, 0.0f};
+    entitie->position = (sfVector2f){100.0f, 100.0f};
     entitie->speed = 1.0f;
     entitie->previous = NULL;
     entitie->next = NULL;

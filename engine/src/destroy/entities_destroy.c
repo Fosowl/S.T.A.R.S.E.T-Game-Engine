@@ -20,8 +20,6 @@ static void internal__destroy_aspect(aspect_t *aspect)
         }
         if (tmp->sheet == NULL)
             continue;
-        if (tmp->sheet->rect != NULL)
-            sfRectangleShape_destroy(tmp->sheet->rect);
         free(tmp->sheet);
     }
 }

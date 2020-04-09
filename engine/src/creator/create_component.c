@@ -5,7 +5,7 @@
 ** create and add new component
 */
 
-#include "../../include/starset_engine.h"
+#include "../../include/internal.h"
 
 static component_t *internal__create_new_component(int (*pointer)()
 , char *name, int id)

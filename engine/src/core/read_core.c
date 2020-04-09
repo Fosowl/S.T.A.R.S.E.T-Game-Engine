@@ -5,7 +5,7 @@
 ** core_update
 */
 
-#include "../../include/starset_engine.h"
+#include "../../include/internal.h"
 
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name)
 {

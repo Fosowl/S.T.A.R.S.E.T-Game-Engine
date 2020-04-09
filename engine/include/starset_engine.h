@@ -28,11 +28,19 @@ typedef struct component_t {
     struct component_t *back;
 } component_t;
 
-typedef struct sheet_t {
-    sfRectangleShape *rect;
-    int current_sheet;
+typedef struct animator_t {
+    char *name;
     sfVector2u size;
-    sfVector2u **sheet_list;
+    int index;
+    sfVector2f position[50];
+    struct animator_t *back;
+    struct animator_t *next;
+} animator_t;
+
+typedef struct sheet_t {
+    sfIntRect rect;
+    sfVector2f current;
+    animator_t *a;
 } sheet_t;
 
 typedef struct aspect_t {
@@ -41,7 +49,6 @@ typedef struct aspect_t {
     sfSprite *sprite;
     float rotation;
     sheet_t *sheet;
-    int is_spritesheet;
     struct aspect_t *next;
 } aspect_t;
 
@@ -75,11 +82,12 @@ entities_t *starset_entities_add(entities_t *entities_list
 , char *source, char *name, sfBool fixed);
 entities_t *starset_add_obstacle_entities(entities_t *entities_list
 , sfVector2f position, sfVector2f size);
-
-// COMPONENT
-
 void starset_add_component(entities_t *entities, char *name
 , int (*pointer)(), char *ptr_name);
+void starset_add_animation(entities_t *entities, char *e_name, char *a_name
+, sfVector2u size);
+void starset_add_animation_key(entities_t *entities, char *e_name
+, char *a_name, sfVector2f keyframe);
 
 // DESTROY
 
@@ -106,10 +114,6 @@ int starset_update_engine(entities_t *entities, sfRenderWindow *window
 , sfImage *image);
 
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
-
-// MISC
-
-char **internal__get_class(char *name);
 
 // FUNCTION ENGINE
 /*

@@ -21,7 +21,7 @@ int main (int ac, char **argv)
     starset_entities_teleport(object_list, "background", 500.0f, 350.0f);
     object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:marc", 0);
     object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:daniel", 0);
-    starset_entities_get_propreties(object_list, "daniel")->speed = 3;
+    starset_entities_get_propreties(object_list, "zombie")->speed = 5;
     window = sfRenderWindow_create(mode, "ENGINE test", sfResize | sfClose, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
     while (sfRenderWindow_isOpen(window)) {

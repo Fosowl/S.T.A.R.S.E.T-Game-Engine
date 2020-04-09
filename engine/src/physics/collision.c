@@ -66,7 +66,7 @@ void internal__collider_update(entities_t *entities, sfRenderWindow *window)
             if (compare(copy->name, sub_copy->name) == true)
                 continue;
             collision_vector = internal__entities_collide(copy, sub_copy);
-            if (copy->is_trigger != true)
+            if (copy->is_trigger != true && sub_copy->is_trigger != true)
                 internal__collision_physics(copy, sub_copy, collision_vector);
         }
         copy = copy->next;
