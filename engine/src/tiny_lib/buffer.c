@@ -70,7 +70,8 @@ char **divide_array(char *str, char separation)
 {
     int o = 0;
     int result_x = 0;
-    char **result = clean_double_alloc(count_word(str) + 1, longest_word(str) + 1);
+    char **result = clean_double_alloc(count_word(str) + 1
+    , longest_word(str) + 1);
 
     for (int str_x = 0; str[str_x] != '\0'; str_x++) {
         if (str[str_x] == separation || str[str_x] == '\t') {
