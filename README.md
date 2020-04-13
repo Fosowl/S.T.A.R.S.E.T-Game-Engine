@@ -50,7 +50,7 @@
 
 ## Docs
 
- <a href="https://github.com/Fosowl/S.T.A.R.S.E.T-Game-Engine/wiki" target="_blank"><strong>Docs mian page</strong></a>
+ <a href="https://github.com/Fosowl/S.T.A.R.S.E.T-Game-Engine/wiki" target="_blank"><strong>Docs main page</strong></a>
 
 ## Contributing 🔃
 
