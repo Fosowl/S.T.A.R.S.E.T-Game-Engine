@@ -16,6 +16,7 @@ char *terrain__destroy_reference(color_ref_t **reference, int index)
         free (reference[i]->name);
         free (reference[i]);
     }
+    if (reference)
     free (reference);
     return (r);
 }
