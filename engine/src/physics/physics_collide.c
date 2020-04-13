@@ -39,7 +39,7 @@ void internal__collision_physics(entities_t *entitie_1
     , entitie_2->position);
     float e = (entitie_1->restitution < entitie_2->restitution
     ?entitie_1->restitution : entitie_2->restitution);
-    float impulse = -(1 + e) * normal;
+    float impulse = -(1 + e) * normal * 0.25;
 
     impulse /= 1 / entitie_1->mass + 1 / entitie_2->mass;
 
