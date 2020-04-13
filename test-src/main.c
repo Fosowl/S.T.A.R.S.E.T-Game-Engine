@@ -47,12 +47,11 @@ int main (int ac, char **argv)
     entities_t *object_list = starset_entities_add(NULL, "./assets/back.jpg", "background", 1);
     starset_entities_get_propreties(object_list, "background")->is_trigger = 1;
     starset_entities_teleport(object_list, "background", 500.0f, 350.0f);
-    object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:marc", 0);
+    object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:player", 0);
     object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:daniel", 0);
-    object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:jean", 0);
     object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:mathis", 0);
+    starset_add_entities_sound(object_list, "zombie", "collide", "./assets/audio.ogg");
     starset_entities_teleport(object_list, "daniel", 100.0f, 150.0f);
-    starset_entities_get_propreties(object_list, "zombie")->speed = 5;
     animator_set(object_list);
     while (sfRenderWindow_isOpen(window)) {
         while (sfRenderWindow_pollEvent(window, &event))
@@ -62,11 +61,12 @@ int main (int ac, char **argv)
             break;
         mouse_pos.x = (float)sfMouse_getPositionRenderWindow(window).x;
         mouse_pos.y = (float)sfMouse_getPositionRenderWindow(window).y;
-        starset_entities_move_to_other(object_list, "mathis", "marc");
-        starset_entities_move_to_other(object_list, "jean", "marc");
-        starset_entities_move_to_other(object_list, "daniel", "marc");
-        starset_entities_move(object_list, "marc", mouse_pos.x, mouse_pos.y);
+        starset_entities_move_to_other(object_list, "mathis", "player");
+        starset_entities_teleport(object_list, "player", mouse_pos.x, mouse_pos.y);
         starset_play_animation(object_list, "zombie", "left", 5);
+        entities_t *tmp = starset_entities_get_propreties(object_list, "player");
+        if (tmp->collision)
+            starset_entities_play_sound(object_list, "daniel", "collide");
         starset_update_engine(object_list, window, NULL);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);
