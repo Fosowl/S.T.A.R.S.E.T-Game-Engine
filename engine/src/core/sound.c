@@ -23,6 +23,8 @@ void internal__dynamic_sound(entities_t *this, entities_t *player)
 {
     sfVector3f vector;
 
+    if (!player || !this)
+        return;
     if (starset_get_distance(player->position, this->position) < 70)
         vector = (sfVector3f){0.0f, 0.0f, 0.0f};
     else {
@@ -50,6 +52,7 @@ void starset_single_play_sound(entities_t *entitie, char *sound_name)
             sfSound_setAttenuation(copy->sound, 20.0f);
             sfSound_setVolume(copy->sound, copy->volume);
             sfSound_play(copy->sound);
+            ok = true;
         }
     }
     if (ok == false)
