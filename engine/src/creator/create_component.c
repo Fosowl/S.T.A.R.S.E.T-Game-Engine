@@ -52,7 +52,8 @@ void starset_add_component(entities_t *entities, char *name
 
     for (copy = entities; copy != NULL
     ; copy = copy->next) {
-        if (search(get[0], copy->name) != -1 || search(get[1], copy->name) != -1) {
+        if (search(get[0], copy->name) != -1 ||
+        search(get[1], copy->name) != -1) {
             copy->component = internal__add_component(copy->component, pointer
             , ptr_name, id);
         }
