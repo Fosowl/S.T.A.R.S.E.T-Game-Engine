@@ -39,4 +39,6 @@ void internal__collider_call(void *pass);
 
 char **internal__get_class(char *name);
 
+void internal__dynamic_sound(entities_t *this, entities_t *player);
+
 #endif /* !INTERNAL_H_ */

@@ -12,6 +12,7 @@ void internal__dynamic_engine(void *ptr)
 {
     thread_pass_t *pass = (thread_pass_t *)ptr;
     sfMutex *mutex = sfMutex_create();
+    entities_t *player = NULL;
 
     if (!mutex) {
         put_error("mutex failure\n");
@@ -21,10 +22,12 @@ void internal__dynamic_engine(void *ptr)
     for (entities_t *entitie = pass->entities; entitie != NULL
     ; entitie = entitie->next) {
         if (pass->image != NULL) {
-            free (pass->entities->terrain);
-            pass->entities->terrain = component__terrain_scanner(entitie
+            free (entitie->terrain);
+            entitie->terrain = component__terrain_scanner(entitie
             , pass->image);
         }
+        search(entitie->name, "player") != -1 ? player = entitie : 0;
+        internal__dynamic_sound(entitie, player);
         starset_entities_render_single(entitie, pass->window);
     }
     sfMutex_destroy(mutex);

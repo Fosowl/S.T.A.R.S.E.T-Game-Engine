@@ -48,6 +48,7 @@ ENGINE_FILES	= core/calculation.c\
 				  core/read_core.c\
 				  core/rotation.c\
 				  core/misc.c\
+				  core/sound.c\
 				  physics/math_vector.c\
 				  physics/math_misc.c\
 				  physics/collision.c\
@@ -60,6 +61,7 @@ ENGINE_FILES	= core/calculation.c\
 				  creator/obstacle.c\
 				  creator/create_component.c\
 				  creator/create_animator.c\
+				  creator/create_sound.c\
 				  destroy/audio_destroy.c\
 				  destroy/component_destroy.c\
 				  destroy/entities_destroy.c\

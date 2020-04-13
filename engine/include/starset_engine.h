@@ -14,6 +14,7 @@ typedef struct audio_t {
     char *name;
     int volume;
     sfSound *sound;
+    sfVector3f binaural;
     sfBool playing;
     sfBool loop;
     struct audio_t *next;
@@ -76,9 +77,10 @@ typedef struct entities_t {
     struct entities_t *previous;
 } entities_t;
 
-// GENERATE
+// MATH
 
 sfVector2f starset_random_position(int nb_1, int nb_2, int nb_3, int nb_4);
+int starset_get_distance(sfVector2f vector_1, sfVector2f vector_2);
 
 // CREATE
 
@@ -92,6 +94,8 @@ void starset_add_animation(entities_t *entities, char *e_name, char *a_name
 , sfVector2u size);
 void starset_add_animation_key(entities_t *entities, char *e_name
 , char *a_name, sfVector2f keyframe);
+void starset_add_entities_sound(entities_t *entities, char *name
+, char *sound_name, char *path);
 
 // DESTROY
 
@@ -107,6 +111,12 @@ void starset_play_animation(entities_t *entitie, char *e_name
 
 void starset_entities_render_single(entities_t *copy, sfRenderWindow *window);
 void starset_entities_render_all(entities_t *entities, sfRenderWindow *window);
+
+// SOUND
+
+void starset_single_play_sound(entities_t *entitie, char *sound_name);
+void starset_entities_play_sound(entities_t *entities, char *name
+, char *sound_name);
 
 // MOVE
 
