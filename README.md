@@ -8,7 +8,6 @@
 - [Features](#features)
 - [Docs](#faq)
 - [Contributing](#contributing)
-- [FAQ](#faq)
 - [Support](#support)
 
 ## Installation
@@ -65,8 +64,6 @@
 
   second way -> issue, report problem and make suggestion :
       go to "issue" and report an issue.
-
-## FAQ
 
 ## Support
 
