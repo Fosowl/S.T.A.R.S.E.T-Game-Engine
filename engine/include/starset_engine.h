@@ -76,7 +76,11 @@ typedef struct entities_t {
     struct entities_t *previous;
 } entities_t;
 
-// CREATOR
+// GENERATE
+
+sfVector2f starset_random_position(int nb_1, int nb_2, int nb_3, int nb_4);
+
+// CREATE
 
 entities_t *starset_entities_add(entities_t *entities_list
 , char *source, char *name, sfBool fixed);
@@ -94,25 +98,30 @@ void starset_add_animation_key(entities_t *entities, char *e_name
 void starset_entities_destroy_all(entities_t *entities);
 void starset_entities_destroy(entities_t *entities);
 
+// ANIMATE
+
+void starset_play_animation(entities_t *entitie, char *e_name
+, char *a_name, int fps);
+
 // RENDER
 
 void starset_entities_render_single(entities_t *copy, sfRenderWindow *window);
 void starset_entities_render_all(entities_t *entities, sfRenderWindow *window);
 
-// CORE
+// MOVE
 
 void starset_entities_teleport(entities_t *entities, char *name
 , float x, float y);
 void starset_entities_move(entities_t *entities, char *name, float x, float y);
 void starset_entities_move_to_other(entities_t *entities, char *first
 , char *second);
-
 float starset_entities_rotate_to(entities_t *entitie, char *name
 , sfVector2f target);
 
+// UPDATE
+
 int starset_update_engine(entities_t *entities, sfRenderWindow *window
 , sfImage *image);
-
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
 
 // FUNCTION ENGINE
