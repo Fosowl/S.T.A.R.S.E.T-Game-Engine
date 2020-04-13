@@ -5,7 +5,7 @@
 ** sound player for engine
 */
 
-#include "../../include/starset_engine.h"
+#include "../../include/internal.h"
 
 static void internal__set_binaural_effect(audio_t *audio, sfVector3f vector)
 {
@@ -53,7 +53,7 @@ void starset_single_play_sound(entities_t *entitie, char *sound_name)
         }
     }
     if (ok == false)
-        return("bad sound name pass\n");
+        put_error ("bad sound name pass\n");
 }
 
 void starset_entities_play_sound(entities_t *entities, char *name

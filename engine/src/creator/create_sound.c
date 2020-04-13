@@ -6,9 +6,9 @@
 */
 
 #include "../../include/macro.h"
-#include "../../include/starset_engine.h"
+#include "../../include/internal.h"
 
-static internal__create_new_audio(char *name, char *path)
+static audio_t *internal__create_new_audio(char *name, char *path)
 {
     audio_t *audio = malloc(sizeof(audio_t));
     sfSoundBuffer *buffer = NULL;
@@ -31,9 +31,8 @@ static internal__create_new_audio(char *name, char *path)
     return (audio);
 }
 
-static audio_t *internal_push_audio(audio_t *audio, char *name, char *path)
+static audio_t *internal__push_audio(audio_t *audio, char *name, char *path)
 {
-    audio_t *new = NULL;
     audio_t *copy = NULL;
 
     if (!audio) {
