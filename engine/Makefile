@@ -48,7 +48,8 @@ ENGINE_FILES	= core/calculation.c\
 				  core/read_core.c\
 				  core/rotation.c\
 				  core/misc.c\
-				  physics/math.c\
+				  physics/math_vector.c\
+				  physics/math_misc.c\
 				  physics/collision.c\
 				  physics/physics_collide.c\
 				  component/call.c\
