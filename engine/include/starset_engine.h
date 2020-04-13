@@ -134,29 +134,4 @@ int starset_update_engine(entities_t *entities, sfRenderWindow *window
 , sfImage *image);
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
 
-// FUNCTION ENGINE
-/*
-    - starset_entities_add
-    - starset_entities_destroy
-    - starset_entities_teleport
-    - starset_entities_move
-    - starset_entities_move_to_other
-    - starset_entities_animate
-    - starset_entities_update
-    - starset_entities_render
-    - starset_entities_kill
-
-    - starset_entities_add_sound
-    - starset_entities_play_sound
-    - starset_entities_update_value
-    - starset_entities_set_spritesheet
-
-    - starset_entities_add_component
-    - starset_entities_destroy_component
-
-    - starset_start_engine
-    - starset_update_engine
-    - starset_destroy_engine
-*/
-
 #endif /* !STARTSET_ENGINE_H_ */
