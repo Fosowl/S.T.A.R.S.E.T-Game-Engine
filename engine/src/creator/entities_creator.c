@@ -53,7 +53,9 @@ static void internal__set_entities_value(entities_t *entitie
     entitie->name = name;
     entitie->terrain = fill("unknown");
     entitie->restitution = 1;
-    entitie->position = (sfVector2f){100.0f, 100.0f};
+    srand((unsigned long long int)malloc(1));
+    entitie->position.x = rand() % 200;
+    entitie->position.y = rand() % 200;
     entitie->speed = 1.0f;
     entitie->previous = NULL;
     entitie->next = NULL;

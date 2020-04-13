@@ -50,6 +50,7 @@ void starset_add_animation(entities_t *entities, char *e_name, char *a_name
             ok = true;
         }
     }
+    starset_play_animation(entities, e_name, a_name, 0);
     if (ok == false)
         put_error("bad entities name in add_animation()\n");
 }
