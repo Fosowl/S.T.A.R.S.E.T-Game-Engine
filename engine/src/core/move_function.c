@@ -58,7 +58,7 @@ static void internal__sub_iterate_other(entities_t *copy
 {
     for (entities_t *sub_copy = entities; sub_copy != NULL
     ; sub_copy = sub_copy->next) {
-        if (search(sub_copy->name, second) != -1) {
+        if (search(second, sub_copy->name) != -1) {
             copy->direction = internal__follow_vector(&copy->position
             , &sub_copy->position, copy->speed);
             *ok = true;

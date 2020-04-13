@@ -44,12 +44,23 @@ void internal__collider_call(void *ptr)
     sfMutex_destroy(mutex);
 }
 
+static void internal__update_random(void)
+{
+    static sfClock *delay = NULL;
+    sfTime t;
+
+    (!delay) ? delay = sfClock_create() : 0;
+    t = sfClock_getElapsedTime(delay);
+    srand(sfTime_asMilliseconds(t));
+}
+
 int starset_update_engine(entities_t *entities, sfRenderWindow *window
 , sfImage *image)
 {
     sfThread *core[3];
     thread_pass_t pass;
 
+    internal__update_random();
     pass.entities = entities;
     pass.window = window;
     pass.image = image;
