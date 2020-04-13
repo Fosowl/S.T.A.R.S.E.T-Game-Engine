@@ -14,10 +14,8 @@ void internal__dynamic_engine(void *ptr)
     sfMutex *mutex = sfMutex_create();
     entities_t *player = NULL;
 
-    if (!mutex) {
-        put_error("mutex failure\n");
+    if (!mutex)
         return;
-    }
     sfMutex_lock(mutex);
     for (entities_t *entitie = pass->entities; entitie != NULL
     ; entitie = entitie->next) {
@@ -38,10 +36,8 @@ void internal__collider_call(void *ptr)
     thread_pass_t *pass = (thread_pass_t *)ptr;
     sfMutex *mutex = sfMutex_create();
 
-    if (!mutex) {
-        put_error("mutex failure\n");
+    if (!mutex)
         return;
-    }
     sfMutex_lock(mutex);
     internal__collider_update(pass->entities, pass->window);
     sfMutex_destroy(mutex);
