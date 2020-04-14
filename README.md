@@ -2,11 +2,11 @@
 
 ***a Pure 2D Game engine made in C / CSFML made in less than 2000 line.***
 
-- [Installation](#installation)
-- [Features](#features)
-- [Docs](#faq)
-- [Contributing](#contributing)
-- [Support](#support)
+- [Installation](#Installation)
+- [Features](#Features)
+- [Docs](#Docs)
+- [Contributing](#Contributing)
+- [Support](#Support)
 
 ## Installation
 
