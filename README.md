@@ -131,4 +131,4 @@ Each entities can emit a sound witch is hear in the relative direction beetween 
 ## Support
 
 
-  <a href="" target="_blank"><strong>Discord</strong></a>
+  <a href="https://discord.gg/tJwAGq" target="_blank"><strong>Discord</strong></a>
