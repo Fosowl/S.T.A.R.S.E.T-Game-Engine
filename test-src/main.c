@@ -51,12 +51,10 @@ int main (int ac, char **argv)
     while (starset_running(window, &event)) {
         mouse_pos.x = (float)sfMouse_getPositionRenderWindow(window).x;
         mouse_pos.y = (float)sfMouse_getPositionRenderWindow(window).y;
+        starset_entities_move_to_other(object_list, "daniel", "player");
         starset_entities_move_to_other(object_list, "mathis", "player");
         starset_entities_teleport(object_list, "player", mouse_pos.x, mouse_pos.y);
         starset_play_animation(object_list, "zombie", "left", 5);
-        starset_entities_teleport(object_list, "player", mouse_pos.x, mouse_pos.y);
-        starset_entities_move_to_other(object_list, "mathis", "player");
-        entities_t *tmp = starset_entities_get_propreties(object_list, "player");
         starset_update_engine(object_list, window, NULL);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);
