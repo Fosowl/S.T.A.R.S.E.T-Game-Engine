@@ -12,7 +12,7 @@
 
 ## Installation
 
-  Option 1 -> test the engine
+  Option 1 :arrow_right: test the engine
 
   ```
 
@@ -26,7 +26,7 @@
 
   ```
 
-  option 2 -> import to your project
+  option 2 :arrow_right: import to your project
 
   ```
 
@@ -91,7 +91,9 @@ each entities can be destroy during runtime, you can also destroy all entities w
 **Binaural sound effect** :label:
 
 ```Each entities can emit a sound witch is hear in the relative direction beetween the entities and the player,
- :warning: player entities must be named "player" in order for this system to work.
+```
+ :warning:
+``` player entities must be named "player" in order for this system to work.
 ```
 
 **Component system** :label:
@@ -104,7 +106,7 @@ each entities can be destroy during runtime, you can also destroy all entities w
 
 ## Contributing 🔃
 
-  first way -> pull request :
+  first way :arrow_right: pull request :
  
     1. fork this repo 🍴.
 
@@ -114,7 +116,7 @@ each entities can be destroy during runtime, you can also destroy all entities w
 
     4. make a pull request, I will check when I have time ;)
 
-  second way -> issue, report bug :beetle: and make suggestion :
+  second way :arrow_right: issue, report bug :beetle: and make suggestion :
       go to "issue" and report an issue.
 
 ## Support
