@@ -27,6 +27,7 @@ static audio_t *internal__create_new_audio(char *name, char *path)
     buffer = sfSoundBuffer_createFromFile(path);
     if (!buffer)
         return (NULL);
+    audio->duration = sfSoundBuffer_getDuration(buffer);
     sfSound_setBuffer(audio->sound, buffer);
     return (audio);
 }

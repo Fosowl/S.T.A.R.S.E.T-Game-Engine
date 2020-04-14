@@ -19,6 +19,7 @@ typedef struct audio_t {
     sfVector3f binaural;
     sfBool playing;
     sfBool loop;
+    sfTime duration;
     struct audio_t *next;
 } audio_t;
 
@@ -127,9 +128,10 @@ void starset_entities_render_all(entities_t *entities, sfRenderWindow *window);
 
 // SOUND
 
-void starset_single_play_sound(entities_t *entitie, char *sound_name);
+void starset_single_play_sound(entities_t *entitie, char *sound_name
+, sfBool loop);
 void starset_entities_play_sound(entities_t *entities, char *name
-, char *sound_name);
+, char *sound_name, sfBool loop);
 
 // MOVE
 

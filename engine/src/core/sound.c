@@ -40,18 +40,33 @@ void internal__dynamic_sound(entities_t *this, entities_t *player)
     internal__set_binaural_effect(this->audio, vector);
 }
 
-void starset_single_play_sound(entities_t *entitie, char *sound_name)
+static void internal__apply_sound(audio_t *copy, sfBool loop)
+{
+    sfSound_setLoop(copy->sound, loop);
+    sfSound_setPosition(copy->sound, copy->binaural);
+    sfSound_setMinDistance(copy->sound, copy->volume);
+    sfSound_setAttenuation(copy->sound, 20.0f);
+    sfSound_setVolume(copy->sound, copy->volume);
+}
+
+void starset_single_play_sound(entities_t *entitie, char *sound_name
+, sfBool loop)
 {
     sfBool ok = false;
+    sfTime delay;
+    static sfClock *timer = NULL;
 
+    if (!timer)
+        timer = sfClock_create();
+    delay = sfClock_getElapsedTime(timer);
     for (audio_t *copy = entitie->audio; copy != NULL; copy = copy->next) {
         if (compare(copy->name, sound_name) == true) {
-            sfSound_setLoop(copy->sound, copy->loop);
-            sfSound_setPosition(copy->sound, copy->binaural);
-            sfSound_setMinDistance(copy->sound, copy->volume);
-            sfSound_setAttenuation(copy->sound, 20.0f);
-            sfSound_setVolume(copy->sound, copy->volume);
-            sfSound_play(copy->sound);
+            internal__apply_sound(copy, loop);
+            if (sfTime_asMilliseconds(delay) > sfTime_asMilliseconds
+            (copy->duration)) {
+                sfSound_play(copy->sound);
+                sfClock_restart(timer);
+            }
             ok = true;
         }
     }
@@ -60,7 +75,7 @@ void starset_single_play_sound(entities_t *entitie, char *sound_name)
 }
 
 void starset_entities_play_sound(entities_t *entities, char *name
-, char *sound_name)
+, char *sound_name, sfBool loop)
 {
     entities_t *copy = entities;
     sfBool ok = false;
@@ -69,7 +84,7 @@ void starset_entities_play_sound(entities_t *entities, char *name
     while (copy != NULL) {
         if (search(get[0], copy->name) != -1 || search(copy->name
         , get[1]) != -1) {
-            starset_single_play_sound(copy, sound_name);
+            starset_single_play_sound(copy, sound_name, loop);
             ok = true;
         }
         copy = copy->next;

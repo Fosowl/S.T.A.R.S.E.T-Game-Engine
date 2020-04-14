@@ -43,10 +43,11 @@ int main (int ac, char **argv)
     object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:player", 0);
     object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:daniel", 0);
     object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:mathis", 0);
-    starset_add_entities_sound(object_list, "zombie", "collide", "./assets/audio.ogg");
-    starset_entities_teleport(object_list, "daniel", 100.0f, 150.0f);
+    starset_add_entities_sound(object_list, "daniel", "collide", "./assets/audio.ogg");
+    starset_entities_teleport(object_list, "daniel", 300.0f, 300.0f);
     animator_set(object_list);
     while (starset_running(window, &event)) {
+    starset_entities_play_sound(object_list, "daniel", "collide", true);
         mouse_pos.x = (float)sfMouse_getPositionRenderWindow(window).x;
         mouse_pos.y = (float)sfMouse_getPositionRenderWindow(window).y;
         starset_entities_move_to_other(object_list, "mathis", "player");
