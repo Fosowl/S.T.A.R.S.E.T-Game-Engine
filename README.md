@@ -47,6 +47,57 @@
 
 ## Features
 
+**Easy to add entities**
+
+```
+It's easy to add entities !
+```
+
+**Easy Animation system**
+
+```
+animation can be set and play in very few line...
+```
+
+**Easy Movement system**
+
+```
+entities can be teleported, follow a point, or follow another entities.
+```
+
+**Class and name system**
+
+```
+each entities have a name and can also have a class,
+witch alow you to select multiple entities of the same class at the same time.
+```
+
+**Collision system**
+
+```
+All collision are detected beetween entities if "is_trigger" is false (false by default),
+collison are handled using real life formula for realistic effect.
+```
+```
+mouse hovering an entities is detected too
+```
+
+**Destruction system**
+
+```
+each entities can be destroy during runtime, you can also destroy all entities when you stop using them.
+```
+
+**Binaural sound effect**
+
+```Each entities can emit a sound witch is hear in the relative direction beetween the entities and the player,
+player entities must be named "player" in order for this system to work.
+```
+
+**Component system**
+
+   ```Component system is Under devellopement  ```
+
 ## Docs
 
  <a href="https://github.com/Fosowl/S.T.A.R.S.E.T-Game-Engine/wiki" target="_blank"><strong>Docs main page</strong></a>
