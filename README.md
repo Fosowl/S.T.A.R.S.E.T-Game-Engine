@@ -2,8 +2,6 @@
 
 ***a Pure 2D Game engine made in C / CSFML made in less than 2000 line.***
 
-[![animation_engine.gif](https://s4.gifyu.com/images/animation_engine.gif)](https://gifyu.com/image/lEht)
-
 - [Installation](#installation)
 - [Features](#features)
 - [Docs](#faq)
@@ -53,11 +51,15 @@
 It's easy to add entities !
 ```
 
+[![add_engine.gif](https://s4.gifyu.com/images/add_engine.gif)](https://gifyu.com/image/lEEJ)
+
 **Easy Animation system** :label:
 
 ```
 animation can be set and play in very few line...
 ```
+
+[![animation_engine.gif](https://s4.gifyu.com/images/animation_engine.gif)](https://gifyu.com/image/lEht)
 
 **Easy Movement system** :label:
 
