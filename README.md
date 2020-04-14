@@ -124,8 +124,7 @@ Each entities can emit a sound witch is hear in the relative direction beetween 
 
     4. make a pull request, I will check when I have time ;)
 
-  second way :arrow_right: issue, report bug :beetle: and make suggestion :
-      go to "issue" and report an issue.
+  second way :arrow_right: issue, report bug :beetle: or make a suggestion.
 
 ## Support
 
