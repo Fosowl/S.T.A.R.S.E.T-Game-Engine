@@ -80,6 +80,13 @@ typedef struct entities_t {
     struct entities_t *previous;
 } entities_t;
 
+// UPDATE
+
+sfBool starset_running(sfRenderWindow *window, sfEvent *event);
+int starset_update_engine(entities_t *entities, sfRenderWindow *window
+, sfImage *image);
+entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
+
 // MATH
 
 sfVector2f starset_random_position(int nb_1, int nb_2, int nb_3, int nb_4);
@@ -130,11 +137,5 @@ void starset_entities_move_to_other(entities_t *entities, char *first
 , char *second);
 float starset_entities_rotate_to(entities_t *entitie, char *name
 , sfVector2f target);
-
-// UPDATE
-
-int starset_update_engine(entities_t *entities, sfRenderWindow *window
-, sfImage *image);
-entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
 
 #endif /* !STARTSET_ENGINE_H_ */

@@ -24,3 +24,14 @@ char **internal__get_class(char *name)
         return NULL;
     return (all);
 }
+
+sfBool starset_running(sfRenderWindow *window, sfEvent *event)
+{
+    if (!sfRenderWindow_isOpen(window))
+        return (false);
+    while (sfRenderWindow_pollEvent(window, event)) {
+        if (event->type == sfEvtClosed)
+                return (false);
+    }
+    return (true);
+}

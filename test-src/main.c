@@ -39,36 +39,24 @@ int main (int ac, char **argv)
     sfVideoMode mode = {1000, 700, 32};
     sfEvent event;
     sfVector2f mouse_pos;
-    int b = 0;
 
     window = sfRenderWindow_create(mode, "ENGINE test", sfResize | sfClose, NULL);
     sfRenderWindow_setFramerateLimit(window, 60);
-
-    entities_t *object_list = starset_entities_add(NULL, "./assets/back.jpg", "background", 1);
-    starset_entities_get_propreties(object_list, "background")->is_trigger = 1;
-    starset_entities_teleport(object_list, "background", 500.0f, 350.0f);
-    object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:player", 0);
+    entities_t *object_list = starset_entities_add(NULL, "./assets/zombie.jpg", "zombie:player", 0);
     object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:daniel", 0);
     object_list = starset_entities_add(object_list, "./assets/zombie.jpg", "zombie:mathis", 0);
     starset_add_entities_sound(object_list, "zombie", "collide", "./assets/audio.ogg");
     starset_entities_teleport(object_list, "daniel", 100.0f, 150.0f);
     animator_set(object_list);
-    while (sfRenderWindow_isOpen(window)) {
-        while (sfRenderWindow_pollEvent(window, &event))
-            if (event.type == sfEvtClosed)
-                b = 1;
-        if (b == 1)
-            break;
+    while (starset_running(window, &event)) {
         mouse_pos.x = (float)sfMouse_getPositionRenderWindow(window).x;
         mouse_pos.y = (float)sfMouse_getPositionRenderWindow(window).y;
         starset_entities_move_to_other(object_list, "mathis", "player");
         starset_entities_teleport(object_list, "player", mouse_pos.x, mouse_pos.y);
         starset_play_animation(object_list, "zombie", "left", 5);
+        starset_entities_teleport(object_list, "player", mouse_pos.x, mouse_pos.y);
+        starset_entities_move_to_other(object_list, "mathis", "player");
         entities_t *tmp = starset_entities_get_propreties(object_list, "player");
-        if (tmp != NULL && tmp->collision) {
-            starset_entities_play_sound(object_list, "daniel", "collide");
-            starset_entities_destroy(object_list, "daniel");
-        }
         starset_update_engine(object_list, window, NULL);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);

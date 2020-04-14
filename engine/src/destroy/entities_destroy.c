@@ -46,7 +46,6 @@ void starset_entities_destroy_all(entities_t *entities)
 entities_t *starset_entities_destroy(entities_t *entities, char *name)
 {
     entities_t *tmp = NULL;
-    entities_t *before = NULL;
     entities_t *copy = entities;
     char **get = internal__get_class(name);
     sfBool ok = false;
