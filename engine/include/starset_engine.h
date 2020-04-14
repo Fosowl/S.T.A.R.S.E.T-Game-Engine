@@ -10,6 +10,8 @@
 
 #include "dependancies.h"
 
+#define LOG 1
+
 typedef struct audio_t {
     char *name;
     int volume;
@@ -74,6 +76,7 @@ typedef struct entities_t {
     component_t *component;
     audio_t *audio;
     struct entities_t *next;
+    struct entities_t *back;
     struct entities_t *previous;
 } entities_t;
 
@@ -100,7 +103,7 @@ void starset_add_entities_sound(entities_t *entities, char *name
 // DESTROY
 
 void starset_entities_destroy_all(entities_t *entities);
-void starset_entities_destroy(entities_t *entities);
+entities_t *starset_entities_destroy(entities_t *entities, char *name);
 
 // ANIMATE
 
