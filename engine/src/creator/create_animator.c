@@ -51,7 +51,7 @@ void starset_add_animation(entities_t *entities, char *e_name, char *a_name
         }
     }
     starset_play_animation(entities, e_name, a_name, 0);
-    if (ok == false)
+    if (!ok && !!LOG)
         put_error("bad entities name in add_animation()\n");
 }
 
@@ -70,7 +70,7 @@ static void internal__add_keyframe_to(sheet_t *this, char *a_name
             copy->max = copy->index;
         }
     }
-    if (ok == false)
+    if (!ok && !!LOG)
         put_error("bad animation name in add_keyframe_to()");
 }
 
@@ -87,6 +87,6 @@ void starset_add_animation_key(entities_t *entities, char *e_name
             ok = true;
         }
     }
-    if (ok == false)
+    if (!ok && !!LOG)
         put_error("bad entities name in add_animation_key()\n");
 }

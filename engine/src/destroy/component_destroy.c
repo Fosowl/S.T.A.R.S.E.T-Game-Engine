@@ -50,6 +50,6 @@ void starset_remove_component(entities_t *entities, char *name, char *ptr_name)
             ok = true;
         }
     }
-    if (ok == false)
+    if (!ok && !!LOG)
         put_error("bad entities name in remove_component function\n");
 }

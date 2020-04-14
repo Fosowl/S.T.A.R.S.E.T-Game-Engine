@@ -83,14 +83,19 @@ entities_t *starset_entities_add(entities_t *entities_list
 {
     entities_t *new_entities = NULL;
     entities_t *copy = NULL;
+    static entities_t *tmp = NULL;
 
     if (entities_list == NULL) {
         new_entities = internal__create_entities(source, name, fixed);
+        tmp = new_entities;
+        tmp->back = NULL;
         return (new_entities);
     } else {
         for (copy = entities_list; copy->next != NULL; copy = copy->next);
         copy->next = internal__create_entities(source, name, fixed);
-        new_entities = entities_list;
+        copy->next->back = tmp;
+        tmp = copy->next;
     }
+    new_entities = entities_list;
     return (new_entities);
 }

@@ -43,3 +43,29 @@ void starset_entities_destroy_all(entities_t *entities)
     }
 }
 
+entities_t *starset_entities_destroy(entities_t *entities, char *name)
+{
+    entities_t *tmp = NULL;
+    entities_t *before = NULL;
+    entities_t *copy = entities;
+    char **get = internal__get_class(name);
+    sfBool ok = false;
+
+    while (copy->next != NULL) {
+        tmp = copy;
+        if (search(get[0], copy->name) != -1 ||
+        search(get[1], copy->name) != -1) {
+            if (copy->back != NULL) {
+                copy->back->next = copy->next;
+                copy->next->back = copy->back;
+            } else
+                entities = copy->next;
+            copy = copy->next;
+            internal__entities_destroy(tmp);
+            ok = true;
+        } else
+            copy = copy->next;
+    }
+    (!ok && !!LOG) ? put_error("bad name in entities_destroy()\n") : 0;
+    return (entities);
+}
