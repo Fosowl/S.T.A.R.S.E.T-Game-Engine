@@ -80,12 +80,15 @@ typedef struct entities_t {
     struct entities_t *previous;
 } entities_t;
 
-// UPDATE
+// UPDATE && SET
 
+sfRenderWindow *starset_set_window(sfVector2u size, char *name
+, int fps);
 sfBool starset_running(sfRenderWindow *window, sfEvent *event);
 int starset_update_engine(entities_t *entities, sfRenderWindow *window
 , sfImage *image);
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
+entities_t *starset_set_background(entities_t *list, char *path);
 
 // MATH
 
