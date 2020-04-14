@@ -67,6 +67,8 @@ animation can be set and play in very few line...
 entities can be teleported, follow a point, or follow another entities.
 ```
 
+[![move_engine.gif](https://s6.gifyu.com/images/move_engine.gif)](https://gifyu.com/image/lkyU)
+
 **Class and name system** :label:
 
 ```
@@ -80,6 +82,8 @@ witch alow you to select multiple entities of the same class at the same time.
 All collision are detected beetween entities if "is_trigger" is false (false by default),
 collison are handled using real life formula for realistic effect.
 ```
+[![collide.gif](https://s6.gifyu.com/images/collide.gif)](https://gifyu.com/image/lkJm)
+
 ```
 mouse hovering an entities is detected too
 ```
@@ -90,11 +94,14 @@ mouse hovering an entities is detected too
 each entities can be destroy during runtime, you can also destroy all entities when you stop using them.
 ```
 
+[![destroy.gif](https://s6.gifyu.com/images/destroy.gif)](https://gifyu.com/image/lkJL)
+
 **Binaural sound effect** :label:
 
 ```Each entities can emit a sound witch is hear in the relative direction beetween the entities and the player,
  player entities must be named "player" in order for this system to work.
 ```
+[![sound_engine.gif](https://s6.gifyu.com/images/sound_engine.gif)](https://gifyu.com/image/lkyf)
 
 **Component system** :label:
 
