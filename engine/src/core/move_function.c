@@ -29,7 +29,7 @@ void starset_entities_teleport(entities_t *entities, char *name
         }
         copy = copy->next;
     }
-    if (ok == false)
+    if (!ok && !!LOG)
         put_error("bad entities name in starset_entities_teleport()\n");
 }
 
@@ -49,7 +49,7 @@ void starset_entities_move(entities_t *entities, char *name, float x, float y)
         }
         copy = copy->next;
     }
-    if (ok == false)
+    if (!ok && !!LOG)
         put_error("bad entities name in starset_entities_move()\n");
 }
 
@@ -80,7 +80,7 @@ void starset_entities_move_to_other(entities_t *entities, char *first
         }
         copy = copy->next;
     }
-    if (ok == false)
+    if (!ok && !!LOG)
         put_error("bad entities name in starset_entities_move_to_other\n");
 }
 

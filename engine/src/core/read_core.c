@@ -21,7 +21,7 @@ entities_t *starset_entities_get_propreties(entities_t *entities, char *name)
         }
         copy = copy->next;
     }
-    if (ok == false)
+    if (!ok && !!LOG)
         put_error("bad entities name in starset_entities_get_propreties()\n");
     return (copy);
 }

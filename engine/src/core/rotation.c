@@ -28,6 +28,6 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
         }
         copy = copy->next;
     }
-    (ok == false) ? put_error("bad entitie name in entities_teleport()\n") : 0;
+    (!ok && !!LOG) ? put_error("bad entitie in entities_teleport()\n") : 0;
     return (copy != NULL ? copy->angle : 0);
 }

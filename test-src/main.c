@@ -65,8 +65,10 @@ int main (int ac, char **argv)
         starset_entities_teleport(object_list, "player", mouse_pos.x, mouse_pos.y);
         starset_play_animation(object_list, "zombie", "left", 5);
         entities_t *tmp = starset_entities_get_propreties(object_list, "player");
-        if (tmp->collision)
+        if (tmp != NULL && tmp->collision) {
             starset_entities_play_sound(object_list, "daniel", "collide");
+            starset_entities_destroy(object_list, "daniel");
+        }
         starset_update_engine(object_list, window, NULL);
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);

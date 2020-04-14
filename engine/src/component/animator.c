@@ -21,7 +21,7 @@ static void internal__play_animation_frame(aspect_t *aspect
         copy = copy->next;
         ok = true;
     }
-    (ok == false) ? put_error("bad name in play_animation_frame()") : 0;
+    (!ok && !!LOG) ? put_error("bad name in play_animation_frame()") : 0;
     aspect->sheet->rect.left = aspect->sheet->current.x;
     aspect->sheet->rect.top = aspect->sheet->current.y;
     aspect->sheet->rect.width = copy->size.x;
@@ -52,5 +52,5 @@ void starset_play_animation(entities_t *entitie, char *e_name
         }
         ok = true;
     }
-    (ok == false) ? put_error("bad entities name in play_animation()\n") : 0;
+    (!ok && !!LOG) ? put_error("bad entities name in play_animation()\n") : 0;
 }
