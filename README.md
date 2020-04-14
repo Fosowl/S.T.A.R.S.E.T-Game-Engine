@@ -91,9 +91,7 @@ each entities can be destroy during runtime, you can also destroy all entities w
 **Binaural sound effect** :label:
 
 ```Each entities can emit a sound witch is hear in the relative direction beetween the entities and the player,
-```
- :warning:
-``` player entities must be named "player" in order for this system to work.
+ player entities must be named "player" in order for this system to work.
 ```
 
 **Component system** :label:
