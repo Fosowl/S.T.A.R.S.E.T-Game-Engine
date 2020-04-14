@@ -36,7 +36,7 @@
 
       2. import to your project
 
-      cp -r ./S.T.A.R.S.E.T-Game-Engine/engine <pth to your repo>/engine
+      cp -r ./S.T.A.R.S.E.T-Game-Engine/engine <path to your repo>/engine
 
       3. call engine Makefile from your makefile 🔨
 
@@ -89,13 +89,13 @@ collison are handled using real life formula for realistic effect.
 [![collide.gif](https://s6.gifyu.com/images/collide.gif)](https://gifyu.com/image/lkJm)
 
 ```
-mouse hovering an entities is detected too
+mouse hovering an entitie is detected too
 ```
 
 **Destruction system** :label:
 
 ```
-each entities can be destroy during runtime, you can also destroy all entities when you stop using them.
+each entitie can be destroy during runtime, you can also destroy all entities when you stop using them.
 ```
 
 [![destroy.gif](https://s6.gifyu.com/images/destroy.gif)](https://gifyu.com/image/lkJL)
@@ -103,8 +103,8 @@ each entities can be destroy during runtime, you can also destroy all entities w
 **Binaural sound effect** :label:
 
 ```
-Each entities can emit a sound witch is hear in the relative direction beetween the entities and the player,
- player entities must be named "player" in order for the binaural effect system to work.
+Each entitie can emit a sound witch is hear in the relative direction beetween the entitie and the player,
+ player entitie must be named "player" and declared before other entities that make sound in order for the binaural effect system to work + also make sure the sound is mono and not stereo.
 ```
 [![sound_engine.gif](https://s6.gifyu.com/images/sound_engine.gif)](https://gifyu.com/image/lkyf)
 
