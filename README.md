@@ -76,6 +76,8 @@ each entities have a name and can also have a class,
 witch alow you to select multiple entities of the same class at the same time.
 ```
 
+[![democlasss.jpg](https://s6.gifyu.com/images/democlasss.jpg)](https://gifyu.com/image/lvMl)
+
 **Collision system** :label:
 
 ```
