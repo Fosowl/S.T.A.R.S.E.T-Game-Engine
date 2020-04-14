@@ -8,6 +8,8 @@
 - [Contributing](#Contributing)
 - [Support](#Support)
 
+ :warning: If you are an EPITA, EPITECH, or 42 student using this for csfml project will result a -42 unless you become a contributor for the project.
+
 ## Installation
 
   Option 1 :arrow_right: test the engine
