@@ -8,7 +8,7 @@
 - [Contributing](#Contributing)
 - [Support](#Support)
 
- :warning: If you are an EPITA, EPITECH, or 42 student using this for csfml project will result a -42 unless you become a contributor for the project.
+ :warning: If you are an EPITA, EPITECH, or 42 student using this for csfml project will result in a -42 unless you become a contributor for this project.
 
 ## Installation
 
