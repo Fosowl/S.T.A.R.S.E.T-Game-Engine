@@ -130,6 +130,5 @@ Each entities can emit a sound witch is hear in the relative direction beetween 
 
 ## Support
 
-  **mail :** martin.legrand@epitech.eu (please use github for pull request and "issue" to report problem).
 
   <a href="" target="_blank"><strong>Discord</strong></a>
