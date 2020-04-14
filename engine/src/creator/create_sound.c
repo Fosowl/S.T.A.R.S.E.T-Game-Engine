@@ -21,6 +21,7 @@ static audio_t *internal__create_new_audio(char *name, char *path)
     audio->volume = 70;
     audio->next = NULL;
     audio->sound = sfSound_create();
+    sfSound_setRelativeToListener(audio->sound, true);
     sfListener_setPosition(audio->binaural);
     if (!audio->sound)
         return (NULL);

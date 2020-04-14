@@ -7,21 +7,21 @@
 
 #include "../../include/internal.h"
 
-static void internal__set_binaural_effect(audio_t *audio, sfVector3f vector)
+static void internal__set_binaural_effect(audio_t *audio, sfVector3f *vector)
 {
     audio_t *copy = audio;
 
     while (copy != NULL) {
-        copy->binaural.x = vector.x;
-        copy->binaural.y = vector.y;
-        copy->binaural.z = vector.z;
+        copy->binaural.x = vector->x;
+        copy->binaural.y = vector->y;
+        copy->binaural.z = vector->z;
         copy = copy->next;
     }
 }
 
 void internal__dynamic_sound(entities_t *this, entities_t *player)
 {
-    sfVector3f vector;
+    sfVector3f vector = (sfVector3f){0.0f, 0.0f, 0.0f};
 
     if (!player || !this)
         return;
@@ -29,15 +29,15 @@ void internal__dynamic_sound(entities_t *this, entities_t *player)
         vector = (sfVector3f){0.0f, 0.0f, 0.0f};
     else {
         if (player->position.x < this->position.x)
-            vector = (sfVector3f){-10.0f, 0.0f, 0.0f};
+            vector.x = -30.0f;
         else
-            vector = (sfVector3f){10.0f, 0.0f, 0.0f};
+            vector.x = -0.0f;
         if (player->position.y < this->position.y)
-            vector = (sfVector3f){0.0f, 0.0f, -5.0f};
+            vector.z = -30.0f;
         else
-            vector = (sfVector3f){0.0f, 0.0f, 5.0f};
+            vector.z = 30.0f;
     }
-    internal__set_binaural_effect(this->audio, vector);
+    internal__set_binaural_effect(this->audio, &vector);
 }
 
 static void internal__apply_sound(audio_t *copy, sfBool loop)

@@ -24,7 +24,7 @@ void internal__dynamic_engine(void *ptr)
             entitie->terrain = component__terrain_scanner(entitie
             , pass->image);
         }
-        search(entitie->name, "player") != -1 ? player = entitie : 0;
+        search("player", entitie->name) != -1 ? player = entitie : 0;
         internal__dynamic_sound(entitie, player);
         starset_entities_render_single(entitie, pass->window);
     }
