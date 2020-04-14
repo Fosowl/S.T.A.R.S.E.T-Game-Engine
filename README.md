@@ -47,32 +47,32 @@
 
 ## Features
 
-**Easy to add entities**
+**Easy to add entities** :label:
 
 ```
 It's easy to add entities !
 ```
 
-**Easy Animation system**
+**Easy Animation system** :label:
 
 ```
 animation can be set and play in very few line...
 ```
 
-**Easy Movement system**
+**Easy Movement system** :label:
 
 ```
 entities can be teleported, follow a point, or follow another entities.
 ```
 
-**Class and name system**
+**Class and name system** :label:
 
 ```
 each entities have a name and can also have a class,
 witch alow you to select multiple entities of the same class at the same time.
 ```
 
-**Collision system**
+**Collision system** :label:
 
 ```
 All collision are detected beetween entities if "is_trigger" is false (false by default),
@@ -82,21 +82,21 @@ collison are handled using real life formula for realistic effect.
 mouse hovering an entities is detected too
 ```
 
-**Destruction system**
+**Destruction system** :label:
 
 ```
 each entities can be destroy during runtime, you can also destroy all entities when you stop using them.
 ```
 
-**Binaural sound effect**
+**Binaural sound effect** :label:
 
 ```Each entities can emit a sound witch is hear in the relative direction beetween the entities and the player,
-player entities must be named "player" in order for this system to work.
+ :warning: player entities must be named "player" in order for this system to work.
 ```
 
-**Component system**
+**Component system** :label:
 
-   ```Component system is Under devellopement  ```
+   :warning: ```Component system is Under devellopement  ```
 
 ## Docs
 
@@ -114,7 +114,7 @@ player entities must be named "player" in order for this system to work.
 
     4. make a pull request, I will check when I have time ;)
 
-  second way -> issue, report problem and make suggestion :
+  second way -> issue, report bug :beetle: and make suggestion :
       go to "issue" and report an issue.
 
 ## Support
