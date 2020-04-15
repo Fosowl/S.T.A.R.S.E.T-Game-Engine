@@ -1,0 +1,24 @@
+language: c
+
+sudo: required
+
+service:
+ - docker
+
+## NOTIFICATIONS
+notifications:
+  email:
+    recipients:
+    - martin.legrand@epitech.eu
+    on_success: never
+    on_failure: always
+
+before_install:
+ - docker pull epitechcontent/epitest-docker
+
+jobs:
+  include :
+    - stage: build
+      name: "Build"
+      script:
+       - docker run -v $PWD:/app epitechcontent/epitest-docker bash -c "cd app && make && make fclean && make .PHONY"
