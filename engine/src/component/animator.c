@@ -11,21 +11,23 @@ static void internal__play_animation_frame(aspect_t *aspect
 , char *a_name, int *frame)
 {
     animator_t *copy = aspect->sheet->a;
+    animator_t *tmp = NULL;
     sfBool ok = false;
 
-    while (copy->next != NULL) {
+    while (copy != NULL) {
         if (compare(copy->name, a_name) == true) {
             aspect->sheet->current.x = copy->position[*frame].x;
             aspect->sheet->current.y = copy->position[*frame].y;
             ok = true;
         }
+        tmp = copy;
         copy = copy->next;
     }
     (!ok && !!LOG) ? put_error("bad animation name in play_animation()\n") : 0;
     aspect->sheet->rect.left = aspect->sheet->current.x;
     aspect->sheet->rect.top = aspect->sheet->current.y;
-    aspect->sheet->rect.width = copy->size.x;
-    aspect->sheet->rect.height = copy->size.y;
+    aspect->sheet->rect.width = tmp->size.x;
+    aspect->sheet->rect.height = tmp->size.y;
     sfSprite_setTextureRect(aspect->sprite, aspect->sheet->rect);
     *frame += 1;
 }
