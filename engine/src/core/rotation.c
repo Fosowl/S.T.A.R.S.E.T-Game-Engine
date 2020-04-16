@@ -31,3 +31,24 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
     (!ok && !!LOG) ? put_error("bad entitie in entities_teleport()\n") : 0;
     return (copy != NULL ? copy->angle : 0);
 }
+
+float starset_entitites_rotate_to_other(entities_t *entitie, char *name
+, char *name_other)
+{
+    float angle = 0.0f;
+    int ok = false;
+    char **get_other = internal__get_class(name_other);
+    entities_t *copy = NULL;
+
+    while (copy != NULL) {
+        if (search(get_other[0], copy->name) != -1 || search(copy->name
+        , get_other[1]) != -1) {
+            starset_entities_rotate_to(entitie, name, copy->position);
+        }
+        copy = copy->next;
+        ok = true;
+    }
+    if (!ok && !!LOG)
+        put_error("bad entities name in rotate_move_to_other\n");
+    return (angle);
+}

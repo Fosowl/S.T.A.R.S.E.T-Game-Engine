@@ -15,26 +15,11 @@ the following code is just a small demo of the engine to play with it
 
 int animator_set(entities_t *entities)
 {
-    starset_add_animation(entities, "zombie", "down", (sfVector2u){25, 48});
-    starset_add_animation_key(entities, "zombie", "down", (sfVector2f){90, 0});
-    starset_add_animation_key(entities, "zombie", "down", (sfVector2f){123, 0});
-    starset_add_animation_key(entities, "zombie", "down", (sfVector2f){156, 0});
-    starset_add_animation_key(entities, "zombie", "down", (sfVector2f){189, 0});
     starset_add_animation(entities, "zombie", "left", (sfVector2u){25, 48});
     starset_add_animation_key(entities, "zombie", "left", (sfVector2f){90, 50});
     starset_add_animation_key(entities, "zombie", "left", (sfVector2f){123, 50});
     starset_add_animation_key(entities, "zombie", "left", (sfVector2f){156, 50});
     starset_add_animation_key(entities, "zombie", "left", (sfVector2f){189, 50});
-    starset_add_animation(entities, "zombie", "right", (sfVector2u){25, 48});
-    starset_add_animation_key(entities, "zombie", "right", (sfVector2f){100, 108});
-    starset_add_animation_key(entities, "zombie", "right", (sfVector2f){133, 108});
-    starset_add_animation_key(entities, "zombie", "right", (sfVector2f){166, 108});
-    starset_add_animation_key(entities, "zombie", "right", (sfVector2f){199, 108});
-    starset_add_animation(entities, "zombie", "up", (sfVector2u){25, 48});
-    starset_add_animation_key(entities, "zombie", "up", (sfVector2f){100, 108});
-    starset_add_animation_key(entities, "zombie", "up", (sfVector2f){133,108});
-    starset_add_animation_key(entities, "zombie", "up", (sfVector2f){166,108});
-    starset_add_animation_key(entities, "zombie", "up", (sfVector2f){199,108});
     return (0);
 }
 

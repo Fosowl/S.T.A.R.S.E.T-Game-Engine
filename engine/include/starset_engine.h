@@ -142,5 +142,7 @@ void starset_entities_move_to_other(entities_t *entities, char *first
 , char *second);
 float starset_entities_rotate_to(entities_t *entitie, char *name
 , sfVector2f target);
+float starset_entitites_rotate_to_other(entities_t *entitie, char *name
+, char *name_other);
 
 #endif /* !STARTSET_ENGINE_H_ */
