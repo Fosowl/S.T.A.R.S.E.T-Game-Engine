@@ -22,7 +22,7 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
             x = target.x - copy->position.x;
             y = target.y - copy->position.y;
             if (sqrt(pow(y, 2) + pow(x, 2)) >= (copy->size.x / 2))
-                copy->angle = atan2(y, x) * 57 * -1;
+                copy->angle = atan2(y, x) * 57;
             ok = true;
             break;
         }

@@ -17,11 +17,11 @@ static void internal__play_animation_frame(aspect_t *aspect
         if (compare(copy->name, a_name) == true) {
             aspect->sheet->current.x = copy->position[*frame].x;
             aspect->sheet->current.y = copy->position[*frame].y;
+            ok = true;
         }
         copy = copy->next;
-        ok = true;
     }
-    (!ok && !!LOG) ? put_error("bad name in play_animation_frame()") : 0;
+    (!ok && !!LOG) ? put_error("bad animation name in play_animation()\n") : 0;
     aspect->sheet->rect.left = aspect->sheet->current.x;
     aspect->sheet->rect.top = aspect->sheet->current.y;
     aspect->sheet->rect.width = copy->size.x;
