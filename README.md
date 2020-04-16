@@ -2,6 +2,8 @@
 
 ***a Pure 2D Game engine made in C / CSFML made in less than 2000 line.***
 
+[![Build Status](https://travis-ci.org/Fosowl/S.T.A.R.S.E.T-Game-Engine.svg?branch=master)](https://travis-ci.org/Fosowl/S.T.A.R.S.E.T-Game-Engine)
+
 - [Installation](#Installation)
 - [Features](#Features)
 - [Docs](#Docs)
