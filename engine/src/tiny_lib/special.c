@@ -7,7 +7,7 @@
 
 #include "../../include/dependancies.h"
 
-int emulate_else_if(int *pass, int true_condition)
+int emulate_else_if_e(int *pass, int true_condition)
 {
     *pass += 1;
     if (true_condition == 1)
@@ -16,7 +16,7 @@ int emulate_else_if(int *pass, int true_condition)
         return (0);
 }
 
-int longest_word(char *buffer)
+int longest_word_e(char *buffer)
 {
     int longest = 0;
     int temp = 0;
@@ -33,4 +33,15 @@ int longest_word(char *buffer)
     if (temp > longest)
         longest = temp;
     return (longest);
+}
+
+void free_array(char **array)
+{
+    return;
+    if (array == NULL)
+        return;
+    for (int i = 0; array[i] != NULL && array[i][0] != '\0'; i++) {
+        free(array[i]);
+    }
+    free(array);
 }

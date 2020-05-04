@@ -15,10 +15,11 @@ static animator_t *internal__create_animation(char *a_name, sfVector2u size)
         return (NULL);
     animator->size.x = size.x;
     animator->size.y = size.y;
-    animator->name = fill(a_name);
+    animator->name = fill_e(a_name);
     animator->next = NULL;
     animator->index = 0;
     animator->max = 0;
+    animator->delay = NULL;
     return (animator);
 }
 
@@ -44,15 +45,16 @@ void starset_add_animation(entities_t *entities, char *e_name, char *a_name
     char **get = internal__get_class(e_name);
 
     for (entities_t *copy = entities; copy != NULL; copy = copy->next) {
-        if (search(get[0], copy->name) != -1 ||
-        search(get[0], copy->name) != -1) {
+        if (search_e(get[0], copy->name) != -1 ||
+        search_e(get[0], copy->name) != -1) {
             internal__add_animation_to(copy, a_name, size);
             ok = true;
         }
     }
     starset_play_animation(entities, e_name, a_name, 0);
     if (!ok && !!LOG)
-        put_error("bad entities name in add_animation()\n");
+        put_err("bad entities name in add_animation()\n");
+    free_array(get);
 }
 
 static void internal__add_keyframe_to(sheet_t *this, char *a_name
@@ -62,8 +64,9 @@ static void internal__add_keyframe_to(sheet_t *this, char *a_name
     sfBool ok = false;
 
     for ( ; copy != NULL; copy = copy->next) {
-        if (compare(copy->name, a_name) == true) {
-            copy->position[copy->index] = keyframe;
+        if (compare_e(copy->name, a_name) == true) {
+            copy->spot[copy->index].x = keyframe.x;
+            copy->spot[copy->index].y = keyframe.y;
             if (copy->index < 50)
                 copy->index += 1;
             ok = true;
@@ -71,7 +74,7 @@ static void internal__add_keyframe_to(sheet_t *this, char *a_name
         }
     }
     if (!ok && !!LOG)
-        put_error("bad animation name in add_keyframe_to()");
+        put_err("bad animation name in add_keyframe()\n");
 }
 
 void starset_add_animation_key(entities_t *entities, char *e_name
@@ -81,12 +84,12 @@ void starset_add_animation_key(entities_t *entities, char *e_name
     char **get = internal__get_class(e_name);
 
     for (entities_t *copy = entities; copy != NULL; copy = copy->next) {
-        if (search(get[0], copy->name) != -1 ||
-        search(get[1], copy->name) != -1) {
+        if (search_e(get[0], copy->name) != -1 ||
+        search_e(get[1], copy->name) != -1) {
             internal__add_keyframe_to(copy->aspect->sheet, a_name, keyframe);
             ok = true;
         }
     }
     if (!ok && !!LOG)
-        put_error("bad entities name in add_animation_key()\n");
+        put_err("bad entities name in add_animation_key()\n");
 }

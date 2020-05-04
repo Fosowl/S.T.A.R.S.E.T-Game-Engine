@@ -10,14 +10,14 @@
 
 #include "../../include/dependancies.h"
 
-int my_strcpy(char *dest, char *src)
+int my_strcpy_e(char *dest, char *src)
 {
     for (int i = 0; src[i] != '\0'; i++)
         dest[i] = src[i];
     return (0);
 }
 
-char *clean_alloc(int size)
+char *clean_alloc_e(int size)
 {
     char *str = NULL;
 
@@ -30,12 +30,12 @@ char *clean_alloc(int size)
     return (str);
 }
 
-char *fill(char *with)
+char *fill_e(char *with)
 {
     int i = 0;
     char *this = NULL;
 
-    this = clean_alloc(sizeof(char) * my_strlen(with) + 2);
+    this = clean_alloc_e(sizeof(char) * my_strlen_e(with) + 2);
     if (this == NULL)
         return (NULL);
     for (i = 0; with[i] != '\0'; i++) {
@@ -45,20 +45,20 @@ char *fill(char *with)
     return (this);
 }
 
-char **clean_double_alloc(int y, int x)
+char **clean_double_alloc_e(int y, int x)
 {
     char **double_buffer = NULL;
 
     double_buffer = malloc(sizeof(char *) * (y + 1));
     if (double_buffer == NULL) {
-        put_error("allocation error !\n");
+        put_err("allocation error_e !\n");
         return (NULL);
     }
     for (int i = 0; i < y; i++) {
         double_buffer[i] = NULL;
-        double_buffer[i] = clean_alloc(x);
+        double_buffer[i] = clean_alloc_e(x);
         if (double_buffer[i] == NULL) {
-            put_error("allocation error !\n");
+            put_err("allocation error_e !\n");
             return (NULL);
         }
     }
@@ -66,12 +66,12 @@ char **clean_double_alloc(int y, int x)
     return (double_buffer);
 }
 
-char **divide_array(char *str, char separation)
+char **divide_array_e(char *str, char separation)
 {
     int o = 0;
     int result_x = 0;
-    char **result = clean_double_alloc(count_word(str) + 1
-    , longest_word(str) + 1);
+    char **result = clean_double_alloc_e(count_word_e(str) + 1
+    , longest_word_e(str) + 1);
 
     for (int str_x = 0; str[str_x] != '\0'; str_x++) {
         if (str[str_x] == separation || str[str_x] == '\t') {

@@ -8,23 +8,6 @@
 #include "../../include/internal.h"
 #include "../../include/dependancies.h"
 
-char **internal__get_class(char *name)
-{
-    char **all = clean_double_alloc(2, 10);
-
-    if (!all)
-        return NULL;
-    if (search(":", name) == true) {
-        all = divide_array(name, ':');
-    } else {
-        all[0] = name;
-        all[1] = name;
-    }
-    if (!all)
-        return NULL;
-    return (all);
-}
-
 sfBool starset_running(sfRenderWindow *window, sfEvent *event)
 {
     if (!sfRenderWindow_isOpen(window))
@@ -43,7 +26,7 @@ sfRenderWindow *starset_set_window(sfVector2u size, char *name
     sfVideoMode mode = {size.x, size.y, 32};
 
     if (size.x < 20 || size.y < 20)
-        put_error("that's really small for a window..\n");
+        put_err("that's really small for a window..\n");
     window = sfRenderWindow_create(mode, name, sfResize | sfClose, NULL);
     if (!window)
         return (NULL);
@@ -59,11 +42,25 @@ entities_t *starset_set_background(entities_t *list, char *path)
 
     if (texture != NULL)
         size = sfTexture_getSize(texture);
-    new = starset_entities_add(list, path, fill("reserved:background"), true);
+    new = starset_entities_add(list, path, fill_e("reserved:background"), true);
     starset_entities_get_propreties(new, "background")->is_trigger = true;
     starset_entities_get_propreties(new, "background")->restitution = 0.0f;
     starset_entities_get_propreties(new, "background")->id = -1;
-    starset_entities_get_propreties(new, "background")->position = (sfVector2f)
+    starset_entities_get_propreties(new, "background")->spot = (sfVector2f)
     {size.x / 2, size.y / 2};
     return (new);
+}
+
+void starset_reset_value(float *value, float timeout, float reset)
+{
+    static sfClock *timer = NULL;
+    sfTime delay = sfTime_Zero;
+
+    if (!timer)
+        timer = sfClock_create();
+    delay = sfClock_getElapsedTime(timer);
+    if (sfTime_asMilliseconds(delay) / 1000 < timeout)
+        return;
+    *value = reset;
+    sfClock_restart(timer);
 }

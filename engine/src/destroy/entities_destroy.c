@@ -14,22 +14,22 @@ static void internal__destroy_aspect(aspect_t *aspect)
     while (aspect != NULL) {
         tmp = aspect;
         aspect = aspect->next;
-        if (tmp->sprite != NULL) {
-            sfSprite_destroy(tmp->sprite);
-            sfTexture_destroy(tmp->texture);
-        }
         if (tmp->sheet == NULL)
             continue;
         free(tmp->sheet);
     }
 }
 
-static void internal__entities_destroy(entities_t *entities)
+static void internal__entities_destroy(entities_t *entitie)
 {
-    internal__destroy_audio(entities->audio);
-    internal__destroy_aspect(entities->aspect);
-    internal__destroy_component(entities->component);
-    free(entities);
+    if (entitie == NULL) {
+        put_err("unexpected NULL value in internal destroy func\n");
+        return;
+    }
+    internal__destroy_audio(entitie->audio);
+    internal__destroy_aspect(entitie->aspect);
+    internal__destroy_component(entitie->component);
+    free(entitie);
 }
 
 void starset_entities_destroy_all(entities_t *entities)
@@ -43,28 +43,43 @@ void starset_entities_destroy_all(entities_t *entities)
     }
 }
 
+static entities_t *internal__reconnect_link(entities_t **real_copy
+, entities_t *entities)
+{
+    entities_t *tmp = *real_copy;
+    entities_t *copy = *real_copy;
+
+    if (copy->back != NULL) {
+        copy->back->next = copy->next;
+        if (copy->next != NULL)
+            copy->next->back = copy->back;
+    } else {
+        entities = entities->next;
+        *real_copy = entities;
+        internal__entities_destroy(entities->back);
+        entities->back = NULL;
+        return (entities);
+    }
+    *real_copy = copy->next;
+    internal__entities_destroy(tmp);
+    return (entities);
+}
+
 entities_t *starset_entities_destroy(entities_t *entities, char *name)
 {
-    entities_t *tmp = NULL;
     entities_t *copy = entities;
     char **get = internal__get_class(name);
     sfBool ok = false;
 
-    while (copy->next != NULL) {
-        tmp = copy;
-        if (search(get[0], copy->name) != -1 ||
-        search(get[1], copy->name) != -1) {
-            if (copy->back != NULL) {
-                copy->back->next = copy->next;
-                copy->next->back = copy->back;
-            } else
-                entities = copy->next;
-            copy = copy->next;
-            internal__entities_destroy(tmp);
+    while (copy != NULL) {
+        if (search_e(get[0], copy->name) != -1 ||
+        search_e(get[1], copy->name) != -1) {
+            entities = internal__reconnect_link(&copy, entities);
             ok = true;
         } else
             copy = copy->next;
     }
-    (!ok && !!LOG) ? put_error("bad name in entities_destroy()\n") : 0;
+    (!ok && !!LOG) ? put_err("bad name in entities_destroy()\n") : 0;
+    free_array(get);
     return (entities);
 }

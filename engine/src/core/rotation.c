@@ -11,25 +11,23 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
 , sfVector2f target)
 {
     entities_t *copy = entitie;
-    int ok = false;
     float x = 0.0f;
     float y = 0.0f;
     char **get = internal__get_class(name);
 
     while (copy != NULL) {
-        if (search(get[0], copy->name) != -1 || search(copy->name
+        if (search_e(get[0], copy->name) != -1 || search_e(copy->name
         , get[0]) != -1) {
-            x = target.x - copy->position.x;
-            y = target.y - copy->position.y;
+            x = target.x - copy->spot.x;
+            y = target.y - copy->spot.y;
             if (sqrt(pow(y, 2) + pow(x, 2)) >= (copy->size.x / 2))
                 copy->angle = atan2(y, x) * 57;
-            ok = true;
             break;
         }
         copy = copy->next;
     }
-    (!ok && !!LOG) ? put_error("bad entitie in entities_teleport()\n") : 0;
-    return (copy != NULL ? copy->angle : 0);
+    free_array(get);
+    return ((copy) ? copy->angle : 0.0f);
 }
 
 float starset_entitites_rotate_to_other(entities_t *entitie, char *name
@@ -41,14 +39,15 @@ float starset_entitites_rotate_to_other(entities_t *entitie, char *name
     entities_t *copy = NULL;
 
     while (copy != NULL) {
-        if (search(get_other[0], copy->name) != -1 || search(copy->name
+        if (search_e(get_other[0], copy->name) != -1 || search_e(copy->name
         , get_other[1]) != -1) {
-            starset_entities_rotate_to(entitie, name, copy->position);
+            angle = starset_entities_rotate_to(entitie, name, copy->spot);
         }
         copy = copy->next;
         ok = true;
     }
     if (!ok && !!LOG)
-        put_error("bad entities name in rotate_move_to_other\n");
+        put_err("bad entities name in rotate_move_to_other\n");
+    free_array(get_other);
     return (angle);
 }

@@ -18,7 +18,7 @@ static component_t *internal__create_new_component(int (*pointer)()
     component->active = true;
     component->next = NULL;
     component->id = id;
-    component->name = fill(name);
+    component->name = fill_e(name);
     return (component);
 }
 
@@ -32,8 +32,8 @@ static component_t *internal__add_component(component_t *component
     if (component == NULL)
         new = internal__create_new_component(pointer, ptr_name, id);
     else {
-        for (copy_component = component; copy_component != NULL
-        ; copy_component = copy_component->next);
+        for (copy_component = component; copy_component->next != NULL;
+        copy_component = copy_component->next);
         copy_component->next = internal__create_new_component(pointer
         , ptr_name, id);
         copy_component->back = tmp;
@@ -52,11 +52,11 @@ void starset_add_component(entities_t *entities, char *name
 
     for (copy = entities; copy != NULL
     ; copy = copy->next) {
-        if (search(get[0], copy->name) != -1 ||
-        search(get[1], copy->name) != -1) {
+        if (search_e(get[0], copy->name) != -1 ||
+        search_e(get[1], copy->name) != -1) {
             copy->component = internal__add_component(copy->component, pointer
             , ptr_name, id);
         }
     }
+    free_array(get);
 }
-

@@ -31,8 +31,8 @@ sfColor internal__image_average_color(sfImage *image, sfVector2i vector
 , sfVector2i size);
 
 float internal__get_magnitude(sfVector2f vector);
-float internal__vector_angle(sfVector2f position_1, sfVector2f position_2);
-float internal__dot_product(sfVector2f position_1, sfVector2f position_2);
+float internal__vector_angle(sfVector2f spot_1, sfVector2f spot_2);
+float internal__dot_product(sfVector2f spot_1, sfVector2f spot_2);
 
 void internal__dynamic_engine(void *ptr);
 void internal__collider_call(void *pass);
@@ -40,5 +40,11 @@ void internal__collider_call(void *pass);
 char **internal__get_class(char *name);
 
 void internal__dynamic_sound(entities_t *this, entities_t *player);
+
+sheet_t *internal__create_sheet(sfVector2u size);
+void internal__set_entities_value(entities_t *entitie
+, int new_id, char *name, sfBool fixed);
+
+int internal__test_class(char *name, char *check_name);
 
 #endif /* !INTERNAL_H_ */

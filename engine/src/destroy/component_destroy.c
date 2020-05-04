@@ -28,7 +28,7 @@ static void internal__remove_this_component(entities_t *entitie, char *ptr_name)
     component_t *tmp = NULL;
 
     while (copy->next != NULL) {
-        if (compare(copy->name, ptr_name) == true) {
+        if (compare_e(copy->name, ptr_name) == true) {
             tmp = copy;
             tmp->back->next = copy->next;
             copy->next->back = copy->back;
@@ -45,11 +45,11 @@ void starset_remove_component(entities_t *entities, char *name, char *ptr_name)
     entities_t *copy = entities;
 
     for ( ; copy != NULL; copy = copy->next) {
-        if (compare(entities->name, name) == true) {
+        if (compare_e(entities->name, name) == true) {
             internal__remove_this_component(copy, ptr_name);
             ok = true;
         }
     }
     if (!ok && !!LOG)
-        put_error("bad entities name in remove_component function\n");
+        put_err("bad entities name in remove_component function\n");
 }

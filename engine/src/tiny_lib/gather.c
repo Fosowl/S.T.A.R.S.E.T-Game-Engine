@@ -7,7 +7,7 @@
 
 #include "../../include/dependancies.h"
 
-int char_in(char c, char *str)
+int char_in_e(char c, char *str)
 {
     for (int i = 0; str[i] != '\0'; i++) {
         if (str[i] == c)
@@ -16,7 +16,7 @@ int char_in(char c, char *str)
     return (-1);
 }
 
-int compare(char *str, char *try)
+int compare_e(char *str, char *try)
 {
     int i = 0;
     int o = 0;
@@ -32,7 +32,7 @@ int compare(char *str, char *try)
         return (0);
 }
 
-int my_strlen(char *str)
+int my_strlen_e(char *str)
 {
     int i = 0;
 
@@ -42,11 +42,11 @@ int my_strlen(char *str)
     return (i);
 }
 
-int search(char *this, char *in)
+int search_e(char *this, char *in)
 {
     int i = 0;
     int  o = 0;
-    int size = my_strlen(this);
+    int size = my_strlen_e(this);
 
     while (in[i] != '\0') {
         if (this[o] == in[i])
@@ -54,13 +54,13 @@ int search(char *this, char *in)
         else
             o = 0;
         if (o == size)
-            return (i - my_strlen(this) + 1);
+            return (i - my_strlen_e(this) + 1);
         i += 1;
     }
     return (-1);
 }
 
-int count_word(char *buffer)
+int count_word_e(char *buffer)
 {
     int count = 0;
 

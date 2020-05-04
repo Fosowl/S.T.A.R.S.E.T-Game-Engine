@@ -14,14 +14,15 @@ entities_t *starset_entities_get_propreties(entities_t *entities, char *name)
     char **get = internal__get_class(name);
 
     while (copy != NULL) {
-        if (search(get[0], copy->name) != -1 ||
-        search(get[1], copy->name) != -1) {
+        if (search_e(get[0], copy->name) != -1 ||
+        search_e(get[1], copy->name) != -1) {
             ok = true;
             break;
         }
         copy = copy->next;
     }
     if (!ok && !!LOG)
-        put_error("bad entities name in starset_entities_get_propreties()\n");
+        put_err("bad entities name in starset_entities_get_propreties()\n");
+    free_array(get);
     return (copy);
 }

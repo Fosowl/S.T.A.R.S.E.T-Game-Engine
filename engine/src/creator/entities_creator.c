@@ -6,9 +6,10 @@
 */
 
 #include "../../include/macro.h"
+#include "../../include/internal.h"
 #include "../../include/starset_engine.h"
 
-static sheet_t *internal__create_sheet(sfVector2u size)
+sheet_t *internal__create_sheet(sfVector2u size)
 {
     sheet_t *sheet = malloc(sizeof(sheet_t));
 
@@ -39,7 +40,7 @@ static aspect_t *internal__create_aspect(char *source)
     return (aspect);
 }
 
-static void internal__set_entities_value(entities_t *entitie
+void internal__set_entities_value(entities_t *entitie
 , int new_id, char *name, sfBool fixed)
 {
     entitie->angle = 0.0f;
@@ -51,12 +52,13 @@ static void internal__set_entities_value(entities_t *entitie
     entitie->id = new_id;
     entitie->life = 100;
     entitie->name = name;
-    entitie->terrain = fill("unknown");
+    entitie->collision = NULL;
+    entitie->terrain = fill_e("unknown");
     entitie->restitution = 1;
     srand((unsigned long long int)malloc(1));
-    entitie->position.x = rand() % 200;
-    entitie->position.y = rand() % 200;
-    entitie->speed = 1.0f;
+    entitie->spot.x = rand() % 200;
+    entitie->spot.y = rand() % 200;
+    entitie->speed = 2.0f;
     entitie->previous = NULL;
     entitie->next = NULL;
     entitie->component = NULL;
@@ -74,6 +76,8 @@ static entities_t *internal__create_entities(char *source, char *name
     entities->aspect = internal__create_aspect(source);
     entities->size = sfTexture_getSize(entities->aspect->texture);
     entities->mass = sqrt((entities->size.x * entities->size.y)) / 2;
+    entities->control.timer = NULL;
+    entities->control.delay = sfTime_Zero;
     new_id++;
     return (entities);
 }

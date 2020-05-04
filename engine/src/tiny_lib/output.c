@@ -7,16 +7,16 @@
 
 #include "../../include/dependancies.h"
 
-void put_error(char *str)
+void put_err(char *str)
 {
-    write(2, "\033[1;33m[ERROR] \033[1;39m", 22);
-    write(2, str, my_strlen(str));
+    write(2, "\033[1;33m[error] \033[1;39m", 22);
+    write(2, str, my_strlen_e(str));
 }
 
-int error(long long int check, char *text)
+int error_e(long long int check, char *text)
 {
     if (check <= 0) {
-        put_error(text);
+        put_err(text);
         return (1);
     }
     return (0);

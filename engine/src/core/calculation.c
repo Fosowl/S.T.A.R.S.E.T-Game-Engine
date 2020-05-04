@@ -12,22 +12,22 @@ int internal__get_vector_direction(float x, float y)
 {
     int direction = RIGHT;
 
-    SWITCH_W
-    CASE_O (y == 0 && x < 0) CASE_C
+    SWITCH_E
+    CASE_E__O (y == 0 && x < 0) CASE_E__C
         direction = LEFT;
-    CASE_O (y == 0 && x > 0) CASE_C
+    CASE_E__O (y == 0 && x > 0) CASE_E__C
         direction = RIGHT;
-    CASE_O (y < 0 && x == 0) CASE_C
+    CASE_E__O (y < 0 && x == 0) CASE_E__C
         direction = UP;
-    CASE_O (y > 0 && x == 0) CASE_C
+    CASE_E__O (y > 0 && x == 0) CASE_E__C
         direction = DOWN;
-    CASE_O (y > 0 && x < 0) CASE_C
+    CASE_E__O (y > 0 && x < 0) CASE_E__C
         direction = DOWN_LEFT;
-    CASE_O (y > 0 && x > 0) CASE_C
+    CASE_E__O (y > 0 && x > 0) CASE_E__C
         direction = DOWN_RIGHT;
-    CASE_O (y < 0 && x < 0) CASE_C
+    CASE_E__O (y < 0 && x < 0) CASE_E__C
         direction = UP_LEFT;
-    CASE_O (y < 0 && x > 0) CASE_C
+    CASE_E__O (y < 0 && x > 0) CASE_E__C
         direction = UP_RIGHT;
     return (direction);
 }
