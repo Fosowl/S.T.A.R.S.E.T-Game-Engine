@@ -2,6 +2,9 @@
 
 ***a Pure 2D Game engine made in C / CSFML made in less than 2000 line.***
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/df589a9f387f444596ee268775fe2930)](https://app.codacy.com/manual/Fosowl/S.T.A.R.S.E.T-Game-Engine?utm_source=github.com&utm_medium=referral&utm_content=Fosowl/S.T.A.R.S.E.T-Game-Engine&utm_campaign=Badge_Grade_Dashboard)
+[![Build Status](https://travis-ci.org/Fosowl/S.T.A.R.S.E.T-Game-Engine.svg?branch=master)](https://travis-ci.org/Fosowl/S.T.A.R.S.E.T-Game-Engine)
+
 - [Installation](#Installation)
 - [Features](#Features)
 - [Docs](#Docs)
@@ -53,7 +56,7 @@
 It's easy to add entities !
 ```
 
-[![add_engine.gif](https://s4.gifyu.com/images/add_engine.gif)](https://gifyu.com/image/lEEJ)
+[![add-correct.gif](https://s6.gifyu.com/images/add-correct.gif)](https://gifyu.com/image/luYz)
 
 **Easy Animation system** :label:
 
