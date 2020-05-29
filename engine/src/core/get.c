@@ -14,7 +14,7 @@ char **internal__get_class(char *name)
 
     if (!all)
         return NULL;
-    if (search_e(":", name) == true) {
+    if (search_e(":", name) != -1) {
         free_array(all);
         all = divide_array_e(name, ':');
         all[2] = NULL;
@@ -78,6 +78,7 @@ int internal__test_class(char *name, char *check_name)
     compare_e(name, get[1])))
         full = 1;
     if (full == 1) {
+        free_array(get);
         return (1);
     }
     free_array(get);

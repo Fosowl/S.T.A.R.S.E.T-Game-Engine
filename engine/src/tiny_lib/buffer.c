@@ -70,7 +70,7 @@ char **divide_array_e(char *str, char separation)
 {
     int o = 0;
     int result_x = 0;
-    char **result = clean_double_alloc_e(count_word_e(str) + 1
+    char **result = clean_double_alloc_e(count_word_e(str) + 2
     , longest_word_e(str) + 1);
 
     for (int str_x = 0; str[str_x] != '\0'; str_x++) {
@@ -80,8 +80,7 @@ char **divide_array_e(char *str, char separation)
             result[o][result_x] = '\0';
             o += 1;
             result_x = -1;
-        }
-        else {
+        } else {
             result[o][result_x] = str[str_x];
         }
         result_x += 1;

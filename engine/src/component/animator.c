@@ -52,19 +52,15 @@ static int internal__update_animation_clock(entities_t *entitie
 int starset_play_animation(entities_t *entities, char *e_name
 , char *a_name, int fps)
 {
-    char **get = internal__get_class(e_name);
     static int frame = 0;
     int r = 0;
 
     for (entities_t *entitie = entities; entitie != NULL;
     entitie = entitie->next) {
-        if ((search_e(get[0], entitie->name) != -1 ||
-        search_e(get[1], entitie->name) != -1) &&
-        internal__update_animation_clock(entitie, fps, &r)) {
+        if (internal__test_class(e_name, entitie->name)) {
             (frame >= entitie->aspect->sheet->a->max) ? frame = 0 : 0;
             internal__play_animation_frame(entitie->aspect, a_name, &frame);
         }
     }
-    free_array(get);
     return (r);
 }
