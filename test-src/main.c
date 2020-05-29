@@ -44,6 +44,7 @@ int main (int ac, char **argv)
         starset_entities_move(object_list, "player", mouse_pos.x, mouse_pos.y);  // make "player" follow mouse coordonate
         starset_entities_rotate_to(object_list, "player", mouse_pos);           // rotate entities named player torward the mouse
         starset_play_animation(object_list, "zombie", "left", 5);              // play animation previously called "left" for all entities of zombie class.
+        starset_debug_log(object_list, "mathis");
         starset_update_engine(object_list, window, NULL);                     // update engine : render entities, check collison, call component.
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);

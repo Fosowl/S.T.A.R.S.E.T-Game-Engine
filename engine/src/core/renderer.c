@@ -16,7 +16,7 @@ void starset_entities_render_single(entities_t *copy, sfRenderWindow *window)
     copy->size.x = width;
     copy->size.y = height;
     if (copy->aspect == NULL || copy->aspect->sprite == NULL) {
-        put_err("NULL aspect for entities aspect when rendering");
+        put_err("NULL aspect for entities when rendering");
         return;
     }
     sfSprite_setOrigin(copy->aspect->sprite, (sfVector2f){width, height});

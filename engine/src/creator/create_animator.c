@@ -46,7 +46,7 @@ void starset_add_animation(entities_t *entities, char *e_name, char *a_name
 
     for (entities_t *copy = entities; copy != NULL; copy = copy->next) {
         if (search_e(get[0], copy->name) != -1 ||
-        search_e(get[0], copy->name) != -1) {
+        search_e(get[1], copy->name) != -1) {
             internal__add_animation_to(copy, a_name, size);
             ok = true;
         }

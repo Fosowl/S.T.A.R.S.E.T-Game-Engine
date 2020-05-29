@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-MODE=DEBUG
+MODE=NORMAL
 
 # color codes
 _END=$'\x1b[0m'
@@ -74,12 +74,13 @@ ENGINE_FILES	= core/calculation.c\
 				  tiny_lib/converter.c\
 				  tiny_lib/gather.c\
 				  tiny_lib/output.c\
-				  tiny_lib/special.c
-
+				  tiny_lib/special.c\
+				  debug/debug_log.c
 
 TEST	 = tests/test.c
 
-FLAGS	+=-I $(IDIR) -Wall -Wextra -lm -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -g3
+FLAGS	+= -I $(IDIR) -Wall -Wextra -lm
+FLAGS	+= -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 
 ENGINE		= $(addprefix $(ENGINE_DIR), $(ENGINE_FILES))
 
@@ -92,9 +93,9 @@ $(ENGINE_NAME): $(OBJS)
 		@echo -e "${_END}${_BOLD}${_UNDER}${_IGREY} \033[5m ] starset engine compilation complete ! [ ${_END}"
 
 ifeq ($(MODE),DEBUG)
-	@FLAGS+=-g3
+	FLAGS+=-g3
 else ifeq ($(MODE),SANITIZE)
-	@FLAGS+=-g3 -fsanatize-adress
+	FLAGS+=-g3 -fsanatize-adress
 endif
 
 %.o : %.c

@@ -63,13 +63,13 @@ $(BIN_NAME):
 		@make clean
 
 debug:
-	@gcc -o $(BIN_NAME) $(SRC) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -g3
+	@gcc -o $(BIN_NAME) $(SRC) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS)
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mDEBUG MODE READY !\033[0m${_END}"
 	@make clean
 
 sanitize:
-	@gcc -o $(BIN_NAME) $(SRC) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -g3 -fsanitize=address
+	@gcc -o $(BIN_NAME) $(SRC) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -fsanitize=address
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mADRESS SANITIZER MODE READY !\033[0m${_END}"
 	@make clean

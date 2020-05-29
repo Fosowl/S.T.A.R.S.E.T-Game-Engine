@@ -97,7 +97,7 @@ char *component__terrain_scanner(entities_t *entitie, ...)
     char *terrain = NULL;
 
     if (entitie->spot.x <= 0 || entitie->spot.y <= 0)
-        return (fill_e("error_e"));
+        return (fill_e("error"));
     vector.x = (int)entitie->spot.x;
     vector.y = (int)entitie->spot.y;
     va_start(list, entitie);
