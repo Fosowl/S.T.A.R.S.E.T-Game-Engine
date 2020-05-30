@@ -25,7 +25,7 @@
 
       2. compilation :
 
-      make clean ; make re
+      make clean ; make re ; ./test
 
   ```
 
