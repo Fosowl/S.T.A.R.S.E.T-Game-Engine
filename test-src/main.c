@@ -36,14 +36,16 @@ int main (int ac, char **argv)
     starset_add_entities_sound(object_list, "zombie", "zombie_sound", "./assets/audio.ogg");  // add a sound for all entities of the class zombie.
     animator_set(object_list);
     while (starset_running(window, &event)) {                                      // check for close event
-        starset_entities_play_sound(object_list, "zombie", "zombie_sound", true); // play the "zombie sound" we previously set for all zombie.
+        entities_t *collide = starset_entities_get_propreties(object_list, "zombie")->collision;
+        if (collide != NULL && compare_e(collide->name, "player")) // check if a zombie is touching the player
+            starset_entities_play_sound(object_list, "zombie", "zombie_sound", true); // play the "zombie sound" we previously set for all zombie.
         mouse_pos.x = (float)sfMouse_getPositionRenderWindow(window).x;
         mouse_pos.y = (float)sfMouse_getPositionRenderWindow(window).y;
         starset_entities_move_to_other(object_list, "mathis", "player");           // move entities named "mathis" to entities named "player".
         starset_entities_move_to_other(object_list, "daniel", "player");          // move entities named "daniel" to entities named "player".
         starset_entities_move(object_list, "player", mouse_pos.x, mouse_pos.y);  // make "player" follow mouse coordonate
         starset_entities_rotate_to(object_list, "player", mouse_pos);           // rotate entities named player torward the mouse
-        starset_play_animation(object_list, "zombie", "left", 5);              // play animation previously called "left" for all entities of zombie class.
+        starset_play_animation(object_list, "zombie", "left", 2);              // play animation previously called "left" for all entities of zombie class.
         starset_update_engine(object_list, window, NULL);                     // update engine : render entities, check collison, call component.
         sfRenderWindow_display(window);
         sfRenderWindow_clear(window, sfBlack);
