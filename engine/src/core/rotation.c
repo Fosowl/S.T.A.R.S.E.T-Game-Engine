@@ -46,7 +46,7 @@ float starset_entitites_rotate_to_other(entities_t *entitie, char *name
         copy = copy->next;
         ok = true;
     }
-    if (!ok && !!LOG)
+    if (!ok && LOG)
         put_err("bad entities name in rotate_move_to_other\n");
     free_array(get_other);
     return (angle);

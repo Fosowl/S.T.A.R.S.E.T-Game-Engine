@@ -23,7 +23,7 @@ static void internal__play_animation_frame(aspect_t *aspect
         tmp = copy;
         copy = copy->next;
     }
-    (!ok && !!LOG) ? put_err("bad animation name in play_animation()\n") : 0;
+    (!ok && LOG) ? put_err("bad animation name in play_animation()\n") : 0;
     aspect->sheet->rect.left = aspect->sheet->current.x;
     aspect->sheet->rect.top = aspect->sheet->current.y;
     aspect->sheet->rect.width = tmp->size.x;

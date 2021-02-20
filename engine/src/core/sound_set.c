@@ -21,7 +21,7 @@ static audio_t *internal__get_audio(audio_t *audio, char *name)
             ok = true;
         }
     }
-    (!ok && !!LOG) ? put_err("bad sound name in set_sound_volume()\n") : 0;
+    (!ok && LOG) ? put_err("bad sound name in set_sound_volume()\n") : 0;
     free_array(get);
     return (tmp);
 }
@@ -42,6 +42,6 @@ void starset_set_sound_volume(entities_t *entities, char *name
     }
     if (audio != NULL)
         audio->volume = volume;
-    (!ok && !!LOG) ? put_err("bad entities in set_sound_volume()\n") : 0;
+    (!ok && LOG) ? put_err("bad entities in set_sound_volume()\n") : 0;
     free_array(get);
 }

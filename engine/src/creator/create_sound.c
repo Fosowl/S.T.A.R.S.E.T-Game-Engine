@@ -69,6 +69,6 @@ void starset_add_entities_sound(entities_t *entities, char *name
             ok = true;
         }
     }
-    (!ok && !!LOG) ? put_err("bad entities in starset_add_sound()\n") : 0;
+    (!ok && LOG) ? put_err("bad entities in starset_add_sound()\n") : 0;
     free_array(get);
 }

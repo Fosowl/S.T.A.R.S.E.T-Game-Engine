@@ -19,7 +19,7 @@ void starset_single_play_sound(entities_t *entitie, char *sound_name
             ok = true;
         }
     }
-    if (!ok && !!LOG)
+    if (!ok && LOG)
         put_err ("bad sound name pass\n");
 }
 
@@ -38,7 +38,7 @@ void starset_entities_play_sound(entities_t *entities, char *name
         }
         copy = copy->next;
     }
-    if (!ok && !!LOG)
+    if (!ok && LOG)
         put_err("bad entities name in starset_play_sound()\n");
     free_array(get);
 }

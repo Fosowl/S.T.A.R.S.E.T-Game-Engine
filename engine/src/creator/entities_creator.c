@@ -59,7 +59,7 @@ void internal__set_entities_value(entities_t *entitie
     entitie->spot.x = rand() % 200;
     entitie->spot.y = rand() % 200;
     entitie->speed = 2.0f;
-    entitie->previous = NULL;
+    entitie->back = NULL;
     entitie->next = NULL;
     entitie->component = NULL;
 }

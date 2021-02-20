@@ -21,7 +21,7 @@ entities_t *starset_entities_get_propreties(entities_t *entities, char *name)
         }
         copy = copy->next;
     }
-    if (!ok && !!LOG)
+    if (!ok && LOG)
         put_err("bad entities name in starset_entities_get_propreties()\n");
     free_array(get);
     return (copy);

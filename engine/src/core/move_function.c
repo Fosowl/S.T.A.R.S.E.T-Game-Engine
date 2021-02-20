@@ -42,7 +42,7 @@ void starset_entities_move(entities_t *entities, char *name, float x, float y)
         }
         copy = copy->next;
     }
-    if (!ok && !!LOG)
+    if (!ok && LOG)
         put_err("bad entities name in starset_entities_move()\n");
 }
 
@@ -71,7 +71,7 @@ void starset_entities_move_to_other(entities_t *entities, char *first
         }
         copy = copy->next;
     }
-    if (!ok && !!LOG)
+    if (!ok && LOG)
         put_err("bad entities name in starset_entities_move_to_other\n");
 }
 
